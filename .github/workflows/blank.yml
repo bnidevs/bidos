@@ -1,5 +1,8 @@
 name: CI
 
+permissions:
+  id-token: write
+
 on:
   push:
     branches: [ "main" ]
@@ -21,7 +24,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::123456789100:role/my-github-actions-role
+          role-to-assume: arn:aws:iam::466125340709:role/github-deploy-action
           aws-region: us-east-1
       
       - name: Deploy to AWS
