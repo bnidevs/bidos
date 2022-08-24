@@ -1,0 +1,34 @@
+name: CI
+
+permissions:
+  id-token: write
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'cftemplate.json'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'cftemplate.json'
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::466125340709:role/github-deploy-action
+          aws-region: us-east-1
+      
+      - name: Deploy to AWS
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: bidos_stack
+          template: cftemplate.json
