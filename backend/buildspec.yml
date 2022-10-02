@@ -7,7 +7,7 @@ phases:
       - npm install
   build:
     commands:
-      - npm run
+      - DEBUG=backend:* npm start
 artifacts:
   files:
     - '**/*'
