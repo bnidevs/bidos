@@ -1,6 +1,5 @@
-_#!/bin/bash_
+#!/bin/bash
 
-export PM2_HOME=/home/ubuntu/.pm2
-pm2 delete backend
+export PM2_HOME=/home/ec2-user/.pm2
 cd /home/ubuntu/backend/
 pm2 start --name backend npm -- start
