@@ -7,6 +7,7 @@ hooks:
   ApplicationStop:
     - location: scripts/stop_server.sh
       timeout: 300
+      runas: root
   BeforeInstall:
     - location: scripts/noop.sh
       timeout: 60
