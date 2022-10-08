@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - cd backend
+      - npm install
+  build:
+    commands:
+      - cd .
+artifacts:
+  files:
+    - '**/*'
