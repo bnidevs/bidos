@@ -1,12 +1,68 @@
 body {
-    padding: 20px;
+    height: 100vh;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00aeff9c
 }
 
-h1{
-  color: #0a0a0a;
-}  
+.container{
+  position: relative;
+  max-width: 450px;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  
+}
 
-a {
-  color: #00B7FF;
+.form{
+  padding: 30px;
+}
+
+.title{
+  font-size: 27px;
+  font-weight: 600;
+  border-radius: 25px;
+  position: relative;
+}
+
+.title::before{
+  content: '';
+  position: fixed;
+  bottom: 453px;
+  height: 3px;
+  width: 78px;
+  background-color: #00aeff9c 
+}
+
+.form .input-field{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.input-field input{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 0 1px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-bottom: 2px solid grey;
+ 
+}
+
+.input-field i{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: grey;
+  font-size: 23px;
+}
+
+.input-field i.showHidePassword{
+  right: 0;
 }
