@@ -1,0 +1,26 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user
+hooks:
+  ApplicationStop:
+    - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root
+  BeforeInstall:
+    - location: scripts/noop.sh
+      timeout: 60
+      runas: root
+  AfterInstall:
+    - location: scripts/post_install.sh
+      timeout: 600
+      runas: root
+  ApplicationStart:
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: root
+  ValidateService:
+    - location: scripts/verify_start.sh
+      timeout: 60
+      runas: root
