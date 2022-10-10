@@ -9,7 +9,7 @@ hooks:
       timeout: 300
       runas: root
   BeforeInstall:
-    - location: scripts/noop.sh
+    - location: scripts/pre_install.sh
       timeout: 60
       runas: root
   AfterInstall:
