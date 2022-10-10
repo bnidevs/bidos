@@ -1,6 +1,6 @@
 body {
     height: 100vh;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family: 'Oswald', serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,6 @@ body {
   width: 100%;
   background: white;
   border-radius: 10px;
-  
 }
 
 .form{
@@ -21,6 +20,7 @@ body {
 }
 
 .title{
+  color: Grey;
   font-size: 27px;
   font-weight: 600;
   border-radius: 25px;
@@ -30,9 +30,9 @@ body {
 .title::before{
   content: '';
   position: fixed;
-  bottom: 453px;
+  bottom: 470px;
   height: 3px;
-  width: 78px;
+  width: 56px;
   background-color: #00aeff9c 
 }
 
@@ -51,9 +51,10 @@ body {
   border: none;
   outline: none;
   font-size: 16px;
-  border-bottom: 2px solid grey;
- 
+  border-bottom: 3px solid grey;
+  transition: all .8s ease;
 }
+
 
 .input-field i{
   position: absolute;
@@ -65,4 +66,67 @@ body {
 
 .input-field i.showHidePassword{
   right: 0;
+}
+
+.input-field input:is(:focus, :valid){
+   border-bottom-color: #00aeff9c;
+}
+
+.input-field input:is(:focus, :valid) ~ i{
+  transition: all .8s ease;
+  color: #00aeff9c;
+}
+
+.form .cbt{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.cbt .cbt-text{
+  display: flex;
+  color: grey;
+  font-size: 14px;
+  align-items: center;
+}
+
+.cbt-text input{
+  /* Make it so you can click anywhere on remember me */
+  margin: 0 6px 0 3px;
+  font-size: 14px;
+  accent-color: #00aeff9c;
+}
+
+.form a{
+
+  color: grey;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.form a:hover{
+  color: grey;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.form .button{
+  margin-top: 35px;
+}
+
+.form .button input{
+  border: none;
+  background-color: #00aeff9c;
+  color: grey;
+  letter-spacing:1px;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease; 
+}
+
+.button input:hover{
+  background-color: #00aeffd0;
 }
