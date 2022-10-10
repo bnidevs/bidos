@@ -3,4 +3,5 @@
 cd /home/ec2-user/
 mkdir -p foo
 cd foo
-wget http://localhost:3000
+SELF=$(curl https://ipinfo.io/ip)
+wget "http://$SELF:3000"
