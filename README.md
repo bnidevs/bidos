@@ -1,5 +1,7 @@
 # bidOS
 
+### Crowdfunding open source
+
 ### Team: 
 Bill Ni, Isaac Efrosman, Nashwan Habboosh, Shashank Garg, Simon Sandrew
 
