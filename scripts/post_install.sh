@@ -1,4 +1,5 @@
 #!/bin/bash
 
-cd /home/ec2-user/backend/
+source /root/.bashrc
+cd /home/ec2-user/bidos/backend
 npm install
