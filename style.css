@@ -4,7 +4,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #00aeff9c
+    background: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18,#FF3706);
+    background-size: 600% 100%;
+    animation: gradient 16s linear infinite;
+    animation-direction: alternate;
+  }
+
+@keyframes gradient{
+  0% {background-position: 0%}
+  100% {background-position: 100%}
 }
 
 .container{
@@ -27,14 +35,25 @@ body {
   position: relative;
 }
 
+.logo{
+  float: right;
+  color: Grey;
+  font-size: 27px;
+  font-weight: 600;
+  border-radius: 25px;
+  
+}
+
+/*Colored line under Login
 .title::before{
   content: '';
   position: fixed;
-  bottom: 470px;
+  bottom: 52px;
   height: 3px;
   width: 56px;
   background-color: #00aeff9c 
 }
+*/
 
 .form .input-field{
   position: relative;
@@ -115,10 +134,11 @@ body {
   margin-top: 35px;
 }
 
+/*Login Button*/
 .form .button input{
   border: none;
-  background-color: #00aeff9c;
-  color: grey;
+  background-image: grey;
+  color: white;
   letter-spacing:1px;
   border-radius: 6px;
   font-size: 20px;
@@ -127,6 +147,26 @@ body {
   transition: all 0.3s ease; 
 }
 
+
 .button input:hover{
-  background-color: #00aeffd0;
+  --angle: 0deg;
+  border-image: linear-gradient(var(--angle), green, yellow) 1;
+  animation: 10s rotate linear infinite;
+
+  border-image-slice: 1;
+  background: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18,#FF3706);
+  background-size: 600% 100%;
+  animation: gradient 16s linear infinite;
+  animation-direction: alternate;
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
