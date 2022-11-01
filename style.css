@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=poppins:200,300,400,500,600,700,800,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins' , sans-serif;
+}
 
 section{
     position: relative;
@@ -39,4 +47,32 @@ header ul li a{
     font-weight: 400;
     margin-left: 40px;
     text-decoration: none;
+}
+
+.content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content .textBox{
+    position:relative;
+    max-width: 600px;
+}
+
+.content .textBox h2{
+    color: grey;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500;
+}
+
+.content .textBox h2 span{
+    background: -webkit-linear-gradient(45deg, yellow, green, rgb(167, 6, 167), rgb(89, 150, 240));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.2em;
+    font-weight:900;
 }
