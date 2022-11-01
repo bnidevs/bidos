@@ -1,20 +1,22 @@
-// fetch("test.json")
-// .then(function(response){
-// 	   return response.json();
-// 	})
-// 	.then(function(projects){
-//         document.getElementById("page").innerHTML = `Projects`
-// 	   let temp = document.querySelector("#page");
-// 	   let output = "";
-// 	//    for(let product of products){
-// 	//       output += `test test`;
-// 	//    }
-//     temp.innerHTML = `testing`;
-// 	//    temp.innerHTML = output;
-// 	});
+let projects = [
+    {
+        "name": "simon",
+        "desc": "very cool"
+    },
 
-fetch
+    {
+        "name": "isaac",
+        "desc": "not cool at all"
+    }
+ ];
 
+function createProjectTemplate (project) {
+    return `
+     <div class = "project">
+        <h3 class = "project-name"> ${project.name} </h3>
+        <p class = "project-desc"> ${project.desc} </p>
+     </div>`
+}
 
-
-document.getElementById("page").innerHTML = `${2+2}`
+document.getElementById("page").innerHTML = 
+`${projects.map(createProjectTemplate).join('')}`;
