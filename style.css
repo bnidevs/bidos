@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=poppins:200,300,400,500,600,700,800,900&display=swap');
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins' , sans-serif;
 }
 
+body{
+    background: linear-gradient(45deg, #414141, #000000);
+
+  }
+   
 section{
     position: relative;
     width: 100%;
@@ -15,7 +17,7 @@ section{
     display: flex;
     justify-content: space-between;
     align-items:center;
-    background: #fff;
+    font-family: 'Poppins' , sans-serif;
 }
 
 header{
@@ -28,26 +30,82 @@ header{
     justify-content: space-between;
     align-items:center;
 }
+
 header .logo{
     position: relative;
     max-width: 120px;
+    
 }
 
 header ul{
+    width: 350px;
     position: relative;
     display: flex;
+
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-direction: row;
 }
 header ul li{
     list-style: none;
+
+
 }
 
-header ul li a{
-    display: inline-block;
-    color: black;
-    font-weight: 400;
-    margin-left: 40px;
+header ul li *{
     text-decoration: none;
+    font-weight: 400;
+    color: white;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
 }
+
+.login{
+
+    color:black;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    background-color: white;
+    
+    border-radius: 25px;
+   
+}
+
+/* header ul li a{
+    display: inline-block;
+    color: rgb(206, 205, 205);
+    font-weight: 400;
+    margin-left: 20px;
+    text-decoration: none;
+   
+}
+
+header ul li div a{
+    display: inline-block;
+    color: rgb(206, 205, 205);
+    font-weight: 400;
+    margin-left: 20px;
+    text-decoration: none;
+   
+} */
+/* 
+.login{
+    display: inline-block;
+    color: rgb(206, 205, 205);
+    font-weight: 400;
+    margin-left: 20px;
+   
+    text-decoration: none;
+    background: rgb(172, 170, 170);
+    
+    border-radius: 25px;
+} */
 
 .content{
     position: relative;
@@ -63,16 +121,24 @@ header ul li a{
 }
 
 .content .textBox h2{
-    color: grey;
+    color:white;
     font-size: 4em;
-    line-height: 1.4em;
+    line-height: 1.2em;
     font-weight: 500;
 }
 
 .content .textBox h2 span{
-    background: -webkit-linear-gradient(45deg, yellow, green, rgb(167, 6, 167), rgb(89, 150, 240));
+    background: -webkit-linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18,#FF3706);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 1.2em;
     font-weight:900;
 }
+
+.content .textBox p{
+    color: white;
+}
+
+
+
+   
+ 
