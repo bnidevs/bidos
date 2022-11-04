@@ -20,6 +20,8 @@ router.post('/', async function(req, res, next) {
         }
     }).json();
 
+    
+
     if(resp.status !== 200){
         res.status(401).send("Invalid token");
     }else{
