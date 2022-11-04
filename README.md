@@ -1,2 +1,10 @@
-# bidos
-BidOS
+# bidOS
+
+### Crowdfunding open source
+
+### Team: 
+Bill Ni, Isaac Efrosman, Nashwan Habboosh, Shashank Garg, Simon Sandrew
+
+For additional information, see [/docs](https://github.com/bnidevs/bidos/tree/main/docs)
+
+#### Built with [Pipedream](https://pipedream.com)
