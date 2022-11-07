@@ -1,0 +1,130 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  height: 100vh;
+  font-family: 'Oswald', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18,#FF3706);
+  background-size: 600% 100%;
+  animation: gradient 16s linear infinite;
+  animation-direction: alternate;
+}
+ 
+/*Make the gradient move*/
+@keyframes gradient{
+  0% {background-position: 0%}
+  100% {background-position: 100%}
+}
+
+/*What holds the actual fields*/
+.container{
+  position: relative;
+  max-width: 450px;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+}
+
+.form{
+  padding: 30px;
+}
+
+/*Login*/
+.title{
+  color: Grey;
+  font-size: 27px;
+  font-weight: 600;
+  border-radius: 25px;
+  position: relative;
+}
+
+
+.button .test{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+i{
+  color: white;
+}
+
+/*Forgot password and sign up text*/
+.form a{
+  color: grey;
+  text-decoration: none;
+  font-size: 14px;
+  padding-left: 72px;
+}
+
+/*When you hover any of the links*/
+.form a:hover{
+  color: grey;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+/*Login Button*/
+.button .test{
+  border: none;
+  background-image: grey;
+  color: white;
+  letter-spacing:1px;
+  border-radius: 6px;
+  font-size: 20px;
+
+  cursor: pointer;
+  
+  transition: all 0.3s ease; 
+  animation: 10s rotate linear infinite;
+  background: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18,#FF3706);
+  background-size: 600% 100%;
+  animation: gradient 16s linear infinite;
+  animation-direction: alternate;
+}
+
+/*Hover animation for login button*/
+.button .test:hover{
+  transform: scale(1.05);
+}
