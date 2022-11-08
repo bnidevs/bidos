@@ -3,23 +3,29 @@ const router = express.Router();
 const AWS = require('aws-sdk');
 AWS.config.update({region: 'us-east-1'});
 const lambda = new AWS.Lambda();
+const fetch = require( 'node-fetch' );
+
 
 
 /* loginUser page*/
-router.post('/', async function(req, res, next) {
+router.get('/', async function(req, res, next) {
    //reroute to the user login to lambda function to hide user storing
+    //781dd8dba73bcb22af21
 
 
-   //make a call to github api with auth token to get user id
-   const resp = await fetch('https://api.github.com/user', {
+// Compare: https://docs.github.com/en/rest/reference/users#get-the-authenticated-user 
+    //get request to user 
+    
+    const temp = await fetch('https://api.github.com/user', {
         method: 'GET',
         headers: {
-            'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'token ' + req.body.token
+            'Authorization': 'Bearer 781dd8dba73bcb22af21'
         }
-    }).json();
+    });
 
+    const data = await temp.json();
+    console.log(data);
     
 
     if(resp.status !== 200){
