@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import {FooterLink, Container} from './App';
+import {FooterLink, Container, LoginButton} from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <FooterLink displayString="Terms of Service" linkPath="#" />
-    <FooterLink displayString="Privacy Policy" linkPath="#" />
     <Container />
+    
+    
   </React.StrictMode>
 );
 
