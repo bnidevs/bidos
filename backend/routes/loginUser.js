@@ -53,25 +53,25 @@ router.post('/', async function(req, res, next) {
         // // and caches the authentication for successive calls
         const { data } = await octokit.request("GET /user");
 
-     
+       //this will have to be finished another time
+        const params = {
+            TableName: 'bidos-users',
+            IndexName: "githubId-index",
+            KeyConditionExpression: "githubId = :ghid",
+            ExpressionAttributeValues: {
+                ":ghid": {
+                    "S": data.id.toString()
+                }
+            },
+        };
 
-        // this will have to be finished another time
-        // const params = {
-        //     TableName: 'bidos-users',
-        //     IndexName: "githubId-index",
-        //     KeyConditionExpression: "githubId = :ghid",
-        //     ExpressionAttributeValues: {
-        //         ":ghid": data.id.toString()
-        //     },
-        // };
-
-        //  await db.query(params, (err, res)=>{
-        //     if(err){
-        //         console.log(err);
-        //     }else{
-        //         console.log(res);
-        //     }
-        // });
+         await db.query(params, (err, res)=>{
+            if(err){
+                console.log(err);
+            }else{
+                console.log(res);
+            }
+        });
     
 
         const parsedUserData = AWS.DynamoDB.Converter.marshall(data);
