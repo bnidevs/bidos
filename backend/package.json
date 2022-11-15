@@ -6,6 +6,9 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.210.0",
+    "@octokit/auth-oauth-user": "^2.0.4",
+    "@octokit/core": "^4.1.0",
     "aws-sdk": "^2.1248.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
