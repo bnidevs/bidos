@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-body{
+.landing_main{
     background: linear-gradient(45deg, #414141, #000000);
     
   }
@@ -56,7 +56,7 @@ header ul li{
     list-style: none;
 
 
-}
+} 
 
 header ul li *{
     text-decoration: none;
@@ -69,12 +69,17 @@ header ul li *{
 
 }
 
+header ul li:hover{
+    text-decoration: underline;
+    color: grey;
+}   
+
 .login{
 
     color:black;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;   
+    box-sizing: border-box;       
     background-color: white;
     
     border-radius: 25px;
