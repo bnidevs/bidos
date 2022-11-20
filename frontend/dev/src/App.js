@@ -8,8 +8,12 @@ import './landing/Landing.css';
 function App() {
     const paths = {
         '/login': <Container />,
-        '/': <LandingPage />
+        '': <LandingPage />
     };
+    
+    for(let path in paths) {
+        paths[`${path}/`] = paths[path]
+    }
 
     let [component, setComponent] = useState(null);
 
