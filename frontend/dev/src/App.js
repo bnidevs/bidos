@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container } from './login/Login';
-import { Page } from './landing/Landing';
+import { LandingPage } from './landing/Landing';
 import './login/Login.css';
 import './landing/Landing.css';
 
@@ -8,7 +8,7 @@ import './landing/Landing.css';
 function App() {
     const paths = {
         '/login': <Container />,
-        '/': <Page />
+        '/': <LandingPage />
     };
 
     let [component, setComponent] = useState(null);
@@ -19,7 +19,7 @@ function App() {
         if(path in paths){
             setComponent(paths[path]);
         }else{
-            setComponent(<Page />);
+            setComponent(<LandingPage />);
         }
     });
 

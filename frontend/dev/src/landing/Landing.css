@@ -11,10 +11,8 @@
     
   }
    
-section{
-    
+section{ 
     position: relative;
-
     width: 1500px;
     min-height:100vh;
     padding: 100px;

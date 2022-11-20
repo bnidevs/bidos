@@ -2,6 +2,7 @@ import './Landing.css';
 import logo from './Untitled_drawing_6.png';
 
 
+//links on nav bar
 function NavBar(props){
     return(
       
@@ -10,6 +11,7 @@ function NavBar(props){
     );
   }
 
+  //Button on nav bar 
   function NavButton(props){
     return(
       
@@ -18,7 +20,8 @@ function NavBar(props){
       );
   }
 
-function Page(){
+
+function LandingPage(){
     return(
         <section className='landing_main'>
             <header>
@@ -45,4 +48,4 @@ function Page(){
     );
 }
 
-export {NavBar, Page};
+export {NavBar, LandingPage};
