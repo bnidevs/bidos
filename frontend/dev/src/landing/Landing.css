@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.landing_main{
+    background: linear-gradient(45deg, #414141, #000000);
+    
+  }
+   
+section{ 
+    position: relative;
+    width: 1500px;
+    min-height:100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    font-family: 'Poppins' , sans-serif;
+}
+
+header{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+header .logo{
+    position: relative;
+    max-width: 120px;
+    
+}
+
+header ul{
+    width: 350px;
+    position: relative;
+    display: flex;
+
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-direction: row;
+}
+header ul li{
+    list-style: none;
+
+
+} 
+
+header ul li *{
+    text-decoration: none;
+    font-weight: 400;
+    color: white;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
+header ul li:hover{
+    text-decoration: underline;
+    color: grey;
+}   
+
+.login{
+
+    color:black;
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;   
+    box-sizing: border-box;       
+    background-color: white;
+    
+    border-radius: 25px;
+   
+}
+
+.content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content .textBox{
+    position:relative;
+    max-width: 600px;
+}
+
+.content .textBox h2{
+    color:white;
+    font-size: 4em;
+    line-height: 1.2em;
+    font-weight: 500;
+}
+
+.content .textBox h2 span{
+    background: -webkit-linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18,#FF3706);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight:900;
+}
+
+.content .textBox p{
+    color: white;
+}
+
+
+
+   
+ 
