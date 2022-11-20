@@ -1,5 +1,5 @@
 import './Landing.css';
-import logo from './Untitled_drawing_6.png';
+import logo from './logo.png';
 
 
 //links on nav bar
