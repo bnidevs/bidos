@@ -32,7 +32,7 @@
     background-color: antiquewhite;
     width: 40vh;
     height: 20vh;
-    min-width: 300px;
+    min-width: 400px;
     min-height: 150px;
     border-radius: 20px;
 
@@ -40,6 +40,12 @@
 
     display: flex;
     flex-direction: column;
+
+    margin: 10px;
+}
+
+.project_card_wrapper{
+    display: inline-block;
 }
 
 .spread_out{
@@ -65,4 +71,8 @@
 
 .fonted{
     font-family: 'Poppins' , sans-serif;
+}
+
+.project_list{
+    overflow-y: auto;
 }
