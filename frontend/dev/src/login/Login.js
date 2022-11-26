@@ -19,7 +19,7 @@ function LoginButton(props){
   )
 }
 
-function Container(){
+function LoginPage(){
   return(
       <div className='login_main'>
         <div className="container">
@@ -41,7 +41,7 @@ function Container(){
 }
 
 
-export {FooterLink, Container, LoginButton};
+export {FooterLink, LoginPage, LoginButton};
 
 
 
