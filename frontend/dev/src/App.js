@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Container } from './login/Login';
+import React, { useEffect, useState, useMemo } from "react";
+import { LoginPage } from './login/Login';
 import { LandingPage } from './landing/Landing';
+import { ProjectsPage } from './projects/Projects';
 import './login/Login.css';
 import './landing/Landing.css';
+import './projects/Projects.css';
 
 //Paths for all pages
 function App() {
-    const paths = {
-        '/login': <Container />,
+    const paths = useMemo(() => ({
+        '/login': <LoginPage />,
+        '/projects': <ProjectsPage />,
         '': <LandingPage />
-    };
+    }), []);
     
     for(let path in paths) {
         paths[`${path}/`] = paths[path]
@@ -24,8 +27,9 @@ function App() {
             setComponent(paths[path]);
         }else{
             setComponent(<LandingPage />);
+            window.location.href = window.location.protocol + "//" + window.location.host;
         }
-    });
+    }, [paths]);
 
     return (<>{component}</>);
 }
