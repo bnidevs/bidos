@@ -21,7 +21,7 @@ function Switcher(){
 
     let check_logged_in = (event) => {
         if(!logged_in){
-            console.log("Only verified users can view private projects.");
+            alert("Only verified users can view private projects.");
             event.preventDefault();
             return;
         }
@@ -38,8 +38,49 @@ function Switcher(){
 }
 
 function ProjectsList(){
+    useEffect(() => {
+        // grab from projects database here
+    });
+
+    const projects = [
+        {
+            "name": "bidOS",
+            "tagline": "Crowdfunding open source",
+            "pool": "$12,345.67"
+        },
+        {
+            "name": "OpenCircuits",
+            "tagline": "Web-based circuit designer",
+            "pool": "$8,501,340.49"
+        },
+        {
+            "name": "Shuttle Tracker",
+            "tagline": "Tracks and maps RPI shuttles",
+            "pool": "$5.10"
+        },
+        {
+            "name": "Submitty",
+            "tagline": "Programming assignment submission system",
+            "pool": "$23.50"
+        },
+        {
+            "name": "fontman",
+            "tagline": "Font management utility for Linux",
+            "pool": "$3,394.19"
+        },
+        {
+            "name": "PollBuddy",
+            "tagline": "Interactive questionnaire platform",
+            "pool": "$2,304,235.90"
+        },
+    ]
+
     return(
-        <ProjectCard />
+        <div className="project_list">
+            {projects.map((project) => (
+                <ProjectCard name={project.name} tagline={project.tagline} pool={project.pool}/>
+            ))}
+        </div>
     );
 }
 
@@ -51,20 +92,22 @@ function ProjectCardButton(props){
     );
 }
 
-function ProjectCard(){
+function ProjectCard(props){
     return(
-        <div className="project_card">
-            <div className="flex spread_out">
-                <h2>bidOS</h2>
-                <h4 className="project_pool">Pool: $12345.67</h4>
-            </div>
-            <div>
-                <p>Crowdfunding open source</p>
-            </div>
-            <div className="spacer"></div>
-            <div className="card_footer flex spread_out">
-                <ProjectCardButton text="Details" />
-                <ProjectCardButton text="Fund" />
+        <div className="project_card_wrapper">
+            <div className="project_card">
+                <div className="flex spread_out">
+                    <h2>{props.name}</h2>
+                    <h4 className="project_pool">Pool: {props.pool}</h4>
+                </div>
+                <div>
+                    <p>{props.tagline}</p>
+                </div>
+                <div className="spacer"></div>
+                <div className="card_footer flex spread_out">
+                    <ProjectCardButton text="Details" />
+                    <ProjectCardButton text="Fund" />
+                </div>
             </div>
         </div>
     );
