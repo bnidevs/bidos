@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Container } from './login/Login';
 import { LandingPage } from './landing/Landing';
 import { ContactPage } from './contact/Contact';
+import { AboutPage } from './about/About';
 
 import './login/Login.css';
 import './landing/Landing.css';
 import './contact/Contact.css';
+import './about/About.css';
 
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
     const paths = {
         '/login': <Container />,
         '/contact': <ContactPage />,
+        '/about': <AboutPage />,
         '': <LandingPage />
     };
     
