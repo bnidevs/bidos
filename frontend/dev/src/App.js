@@ -2,14 +2,22 @@ import React, { useEffect, useState, useMemo } from "react";
 import { LoginPage } from './login/Login';
 import { LandingPage } from './landing/Landing';
 import { ProjectsPage } from './projects/Projects';
+import { ContactPage } from './contact/Contact';
+import { AboutPage } from './about/About';
+
 import './login/Login.css';
 import './landing/Landing.css';
 import './projects/Projects.css';
+import './contact/Contact.css';
+import './about/About.css';
 
-//Paths for all pages
+
 function App() {
+    //Paths for all pages
     const paths = useMemo(() => ({
         '/login': <LoginPage />,
+        '/contact': <ContactPage />,
+        '/about': <AboutPage />,
         '/projects': <ProjectsPage />,
         '': <LandingPage />
     }), []);

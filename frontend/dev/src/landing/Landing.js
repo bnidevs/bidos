@@ -25,8 +25,8 @@ function LandingPage(){
                 
                     <NavBar displayString="Home" linkPath="/"/>
                     <NavBar displayString="Projects" linkPath="/projects"/>
-                    <NavBar displayString="About" linkPath="About"/>
-                    <NavBar displayString="Contact" linkPath="Contact"/>
+                    <NavBar displayString="About" linkPath="/about"/>
+                    <NavBar displayString="Contact" linkPath="/contact"/>
                     <NavButton displayString="Login" linkPath="/login"/>
                 
                 </ul>
