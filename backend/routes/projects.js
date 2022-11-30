@@ -6,7 +6,7 @@ const router = express.Router();
 
 const db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
-router.route('/').get(async function(req, res, next) {
+router.get('/', async function(req, res, next) {
     try{
         const projectParams = {
             TableName: 'bidos-projects',
