@@ -6,7 +6,7 @@ const router = express.Router();
 
 const db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
-router.get('/', async function(req, res, next) {
+router.route('/').get(async function(req, res, next) {
     try{
         const projectParams = {
             TableName: 'bidos-projects',
@@ -17,13 +17,13 @@ router.get('/', async function(req, res, next) {
         };
 
         await db.query(projectParams, (err, data)=>{
-            res.send({
+            res.status(200).send({
                 status: "success",
                 projects: data
             });
         });
     }catch(error){
-        res.send({
+        res.status(500).send({
             status: "error",
             message: error.toString()
         });
