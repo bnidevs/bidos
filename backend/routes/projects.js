@@ -1,8 +1,8 @@
 const AWS = require('aws-sdk');
 AWS.config.update({region: 'us-east-1'});
-const gen = require('crypto');
-const express = require('express');
-const router = express.Router();
+let gen = require('crypto');
+let express = require('express');
+let router = express.Router();
 
 const db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
