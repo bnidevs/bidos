@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18,#FF3706);
+  background: linear-gradient(#414141, #000000);
   background-size: 600% 100%;
   animation: gradient 16s linear infinite;
   animation-direction: alternate;
@@ -17,6 +17,12 @@
 @keyframes gradient{
   0% {background-position: 0%}
   100% {background-position: 100%}
+}
+
+header .logo{
+  position: relative;
+  max-width: 120px;
+
 }
 
 /*What holds the actual fields*/
@@ -65,6 +71,8 @@ i{
   font-weight: 800px;
 }
 
+
+
 /*When you hover any of the links*/
 .form a:hover{
   color: grey;
@@ -86,7 +94,7 @@ i{
   
   transition: all 0.3s ease; 
   animation: 10s rotate linear infinite;
-  background: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18,#FF3706);
+  background: linear-gradient(45deg, #f04714, #a1134a, #187597, #189276, #c49727,#c52a03);
   background-size: 600% 100%;
   animation: gradient 16s linear infinite;
   animation-direction: alternate;
