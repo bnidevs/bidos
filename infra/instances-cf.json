@@ -42,7 +42,7 @@
               "Ref": "SecurityGroup"
             }
           ],
-          "ImageId": "ami-246ed34c",
+          "ImageId": "ami-0b0dcb5067f052a63",
           "InstanceType": {
             "Ref": "InstanceType"
           },
