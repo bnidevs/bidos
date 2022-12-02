@@ -1,6 +1,6 @@
 import './Projects.css';
 import logo from '../static/logo.png';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 //links on nav bar
 function NavBar(props){
@@ -46,7 +46,9 @@ function ProjectsList(){
         {
             "name": "bidOS",
             "tagline": "Crowdfunding open source",
-            "pool": "$12,345.67"
+            "pool": "$12,345.67",
+            "url": "/bidosHashed",
+            "fund": "/bidosFundUrl"
         },
         {
             "name": "OpenCircuits",
@@ -78,7 +80,7 @@ function ProjectsList(){
     return(
         <div className="project_list">
             {projects.map((project) => (
-                <ProjectCard name={project.name} tagline={project.tagline} pool={project.pool}/>
+                <ProjectCard name={project.name} tagline={project.tagline} pool={project.pool} url={project.url}/>
             ))}
         </div>
     );
@@ -86,9 +88,9 @@ function ProjectsList(){
 
 function ProjectCardButton(props){
     return(
-        <button className="project_card_btn">
+        <a className="project_card_btn" href={props.linkPath}>
             <h4 className="fonted">{props.text}</h4>
-        </button>
+        </a>
     );
 }
 
@@ -105,8 +107,8 @@ function ProjectCard(props){
                 </div>
                 <div className="spacer"></div>
                 <div className="card_footer flex spread_out">
-                    <ProjectCardButton text="Details" />
-                    <ProjectCardButton text="Fund" />
+                    <ProjectCardButton text="Details" linkPath={props.url}/>
+                    <ProjectCardButton text="Fund"  linkPath={props.url}/>
                 </div>
             </div>
         </div>
@@ -121,8 +123,8 @@ function ProjectsPage(props){
             <ul>
                 <NavBar displayString="Home" linkPath="/"/>
                 <NavBar displayString="Projects" linkPath="/projects"/>
-                <NavBar displayString="About" linkPath="About"/>
-                <NavBar displayString="Contact" linkPath="Contact"/>
+                <NavBar displayString="About" linkPath="/about"/>
+                <NavBar displayString="Contact" linkPath="/contact"/>
                 <NavButton displayString="Login" linkPath="/login"/>
             </ul>
         </header>   

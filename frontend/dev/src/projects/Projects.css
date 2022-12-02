@@ -61,8 +61,14 @@
     border: none;
     padding: 1vh;
     border-radius: 2vh;
-
+    color: #000000;
+    text-decoration: none;
+    transition: all 0.2s ease;
     outline: 2px solid black;
+}
+
+.project_card_btn:hover{
+    transform: scale(1.05);
 }
 
 .spacer{
