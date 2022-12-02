@@ -10,13 +10,19 @@ router.get('/', async function(req, res, next) {
     try{
         const projectParams = {
             TableName: 'bidos-projects',
-            KeyConditionExpression: "public = :bpublic",
+            IndexName : 'vis-index',
+            KeyConditionExpression: 'vis = :vis',
             ExpressionAttributeValues: {
-                ":bpublic": {"BOOL" : true }
+                ":vis": {'S' : 'public'}
             },
+            ProjectionExpression: "project_name, tagline, project_pool"
         };
 
         await db.query(projectParams, (err, data)=>{
+            if(err){
+                console.log(err);
+                throw new Error(err.toString());
+            }
             res.status(200).send({
                 status: "success",
                 projects: data
