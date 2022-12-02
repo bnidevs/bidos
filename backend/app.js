@@ -3,12 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var projectsRouter = require('./routes/projects');
 
 var app = express();
+
+app.use(cors({
+  origin: 'http://bidos-website.s3-website-us-east-1.amazonaws.com',
+  optionsSuccessStatus: 200
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
