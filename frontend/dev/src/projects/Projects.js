@@ -1,6 +1,6 @@
 import './Projects.css';
 import logo from '../static/logo.png';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 //links on nav bar
 function NavBar(props){
@@ -38,47 +38,34 @@ function Switcher(){
 }
 
 function ProjectsList(){
-    useEffect(() => {
-        // grab from projects database here
+    const [projects, setProjects] = useState([]);
+    const currency_format = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
     });
 
-    const projects = [
-        {
-            "name": "bidOS",
-            "tagline": "Crowdfunding open source",
-            "pool": "$12,345.67"
-        },
-        {
-            "name": "OpenCircuits",
-            "tagline": "Web-based circuit designer",
-            "pool": "$8,501,340.49"
-        },
-        {
-            "name": "Shuttle Tracker",
-            "tagline": "Tracks and maps RPI shuttles",
-            "pool": "$5.10"
-        },
-        {
-            "name": "Submitty",
-            "tagline": "Programming assignment submission system",
-            "pool": "$23.50"
-        },
-        {
-            "name": "fontman",
-            "tagline": "Font management utility for Linux",
-            "pool": "$3,394.19"
-        },
-        {
-            "name": "PollBuddy",
-            "tagline": "Interactive questionnaire platform",
-            "pool": "$2,304,235.90"
-        },
-    ]
+    useEffect(() => {
+        fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects/')
+            .then(resp => resp.json())
+            .then(obj => obj['projects']['Items'])
+            .then(data => {
+                data.map(el => {
+                    for(let k in el){
+                        el[k] = el[k].values()[0];
+                        if(k === 'project_pool'){
+                            el[k] = parseFloat(el[k]);
+                        }
+                    }
+                    return el;
+                });
+            })
+            .then(cleaned => {setProjects(cleaned)});
+    });
 
     return(
         <div className="project_list">
             {projects.map((project) => (
-                <ProjectCard name={project.name} tagline={project.tagline} pool={project.pool}/>
+                <ProjectCard name={project.project_name} tagline={project.tagline} pool={currency_format.format(project.project_pool)}/>
             ))}
         </div>
     );
