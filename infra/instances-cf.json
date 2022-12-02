@@ -96,6 +96,7 @@
                   "}\n",
                   "# Install the AWS CodeDeploy Agent.\n",
                   "cd /home/ec2-user/\n",
+                  "yum -y install ruby\n",
                   "aws s3 cp 's3://aws-codedeploy-us-east-1/latest/codedeploy-agent.noarch.rpm' . || error_exit 'Failed to download AWS CodeDeploy Agent.'\n",
                   "yum -y install codedeploy-agent.noarch.rpm || error_exit 'Failed to install AWS CodeDeploy Agent.' \n",
                   "mkdir /root/.nvm \n",
