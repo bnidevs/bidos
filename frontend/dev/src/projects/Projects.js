@@ -51,7 +51,7 @@ function ProjectsList(){
             .then(data => {
                 data.map(el => {
                     for(let k in el){
-                        el[k] = el[k].values()[0];
+                        el[k] = Object.values(el[k])[0];
                         if(k === 'project_pool'){
                             el[k] = parseFloat(el[k]);
                         }
