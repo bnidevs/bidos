@@ -11,10 +11,7 @@ var projectsRouter = require('./routes/projects');
 
 var app = express();
 
-app.use(cors({
-  origin: 'http://bidos-website.s3-website-us-east-1.amazonaws.com',
-  optionsSuccessStatus: 200
-}));
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
