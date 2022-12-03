@@ -49,7 +49,7 @@ function ProjectsList(){
             .then(resp => resp.json())
             .then(obj => obj['projects']['Items'])
             .then(data => {
-                data.map(el => {
+                return data.map(el => {
                     for(let k in el){
                         el[k] = Object.values(el[k])[0];
                         if(k === 'project_pool'){
