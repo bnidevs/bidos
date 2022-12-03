@@ -45,7 +45,7 @@ function ProjectsList(){
     });
 
     useEffect(() => {
-        fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects/')
+        fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects')
             .then(resp => resp.json())
             .then(obj => obj['projects']['Items'])
             .then(data => {
