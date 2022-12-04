@@ -1,20 +1,6 @@
 import './Projects.css';
-import logo from '../static/logo.png';
+import { PageHeader } from '../components/Parts';
 import { useEffect, useState } from 'react';
-
-//links on nav bar
-function NavBar(props){
-    return(
-        <li><a href={props.linkPath} className="text">{props.displayString}</a></li>     
-    );
-}
-
-  //Button on nav bar 
-function NavButton(props){
-    return(
-        <li><a href={props.linkPath} className="login">{props.displayString}</a></li>
-    );
-}
 
 function Switcher(){
     const logged_in = false;
@@ -103,16 +89,7 @@ function ProjectCard(props){
 function ProjectsPage(props){
   return(
     <section className='projects_main'>
-        <header>
-        <a href="/" ><img src={logo} className="logo" alt="logo"/></a>
-            <ul>
-                <NavBar displayString="Home" linkPath="/"/>
-                <NavBar displayString="Projects" linkPath="/projects"/>
-                <NavBar displayString="About" linkPath="/about"/>
-                <NavBar displayString="Contact" linkPath="/contact"/>
-                <NavButton displayString="Login" linkPath="/login"/>
-            </ul>
-        </header>   
+        <PageHeader />
         <div className="content">
             <Switcher />
             <ProjectsList />
