@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import { LoginPage } from './login/Login';
 import { LandingPage } from './landing/Landing';
 import { ProjectsPage } from './projects/Projects';
@@ -20,7 +20,7 @@ function App() {
         '/login': LoginPage,
         '/contact': ContactPage,
         '/about': AboutPage,
-        '/project/:projectId': ProjectPage,
+        '/project/:projectName': ProjectPage,
         '/projects': ProjectsPage,
         '': LandingPage    
     }), []);
@@ -29,9 +29,7 @@ function App() {
 
     const {Page, variables} = useMemo(() => {
         const variables = {};
-
         const pagePath =  Object.keys(paths).find(path => {
-
             const parts = getUrlParts(path);
 
             return parts.every((part, index) => {
@@ -40,13 +38,11 @@ function App() {
 
                     if(isMatch){
                         const vName = part.replace(":", '');
-
                         variables[vName] = pathnameParts[index];
                     }
  
                     return isMatch;
                 }
-
                 return pathnameParts[index] === part;
             })
         });
