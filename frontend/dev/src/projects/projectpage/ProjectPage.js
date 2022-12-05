@@ -7,8 +7,18 @@ function RepoBtn(props){
         <a href={props.link}>
             <button
                 className='project_footer_button'
-                iconName="fa fa-github fa-lg"
-            />
+            >
+                <i className="fa fa-github fa-lg" ></i>
+            </button>
+        </a>
+    );
+}
+
+function ContributorStub(props){
+    return (
+        <a href={props.html_url} className='flex contributor_link clean'>
+            <img src={props.avatar_url} alt={`github avatar: ${props.login}`} className='contributor_avatar'/>
+            <h5>{props.login}</h5>
         </a>
     );
 }
@@ -19,7 +29,7 @@ function ProjectPage(props){
 
     useEffect(() => {
         const t = async () => {
-            await fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects/search?name=' + props.projectName.replaceAll('_', ' '))
+            fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects/search?name=' + props.projectName.replaceAll('_', ' '))
                 .then(resp => resp.json())
                 .then(obj => obj['projects']['Items'][0])
                 .then(proj => {
@@ -30,13 +40,15 @@ function ProjectPage(props){
                         }
                     }
                     setProjectData(proj);
+                    return proj.repo_link
+                })
+                .then(repo_link => {
+                    fetch(`https://api.github.com/repos/${repo_link.split('.com/')[1]}/contributors`)
+                        .then(resp => resp.json())
+                        .then(contributors => contributors.sort((a, b) => b.contributions - a.contributions))
+                        .then(lst => lst.slice(0,10))
+                        .then(top10 => setContributorData(top10));
                 });
-
-            await fetch(`https://api.github.com/repos/${projectData.repo_link.split('.com/')[1]}/contributors`)
-                .then(resp => resp.json())
-                .then(contributors => contributors.sort((a, b) => a.contributions - b.contributions))
-                .then(lst => lst.slice(0,10))
-                .then(top10 => setContributorData(top10));
         };
         t();
     }, []);
@@ -58,16 +70,15 @@ function ProjectPage(props){
             </p>
             <br />
             <br />
-            <div className='flex'>
-                <RepoBtn link={projectData.repo_link} />
+            <div className='flex col left'>
+                <h3>Top contributors:</h3>
+                <div className='flex'>
+                    {contributorData.map(e => <ContributorStub {...e} />)}
+                </div>
             </div>
             <br />
-            <h3>Top contributors:</h3>
             <div className='flex'>
-                {contributorData.map(e => <a href={e.html_url}>
-                    <img href={e.avatar_url} />
-                    <h5>{e.login}</h5>
-                </a>)}
+                <RepoBtn link={projectData.repo_link} />
             </div>
           </div>                 
       </section>
