@@ -42,6 +42,8 @@
     flex-direction: column;
 
     margin: 10px;
+
+    color: black;
 }
 
 .project_card_wrapper{

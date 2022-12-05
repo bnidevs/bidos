@@ -58,10 +58,17 @@ function ProjectsList(){
 }
 
 function ProjectCardButton(props){
+    let projNameCleaned = '#';
+    if(props.link){
+        projNameCleaned = `/project/${props.link.replace(/ /g, '_')}`;
+    }
+
     return(
-        <button className="project_card_btn">
-            <h4 className="fonted">{props.text}</h4>
-        </button>
+        <a href={projNameCleaned}>
+            <button className="project_card_btn">
+                <h4 className="fonted">{props.text}</h4>
+            </button>
+        </a>
     );
 }
 
@@ -78,7 +85,7 @@ function ProjectCard(props){
                 </div>
                 <div className="spacer"></div>
                 <div className="card_footer flex spread_out">
-                    <ProjectCardButton text="Details" />
+                    <ProjectCardButton text="Details" link={props.name}/>
                     <ProjectCardButton text="Fund" />
                 </div>
             </div>
