@@ -37,15 +37,15 @@ router.get('/', async function(req, res, next) {
 });
 
 router.get('/search', async function(req, res, next) {
-    if(!'name' in req.query){
-        res.status(500).send({
-            status: "error",
-            message: "no args"
-        });
-        return;
-    }
-
     try{
+        if(!req.query.name){
+            res.status(500).send({
+                status: "error",
+                message: "no args"
+            });
+            return;
+        }
+
         const projectParams = {
             TableName: 'bidos-projects',
             IndexName : 'project_name-index',
@@ -58,7 +58,6 @@ router.get('/search', async function(req, res, next) {
 
         await db.query(projectParams, (err, data)=>{
             if(err){
-                console.log(err);
                 throw new Error(err.toString());
             }
             res.status(200).send({
