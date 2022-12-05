@@ -23,6 +23,17 @@ function ContributorStub(props){
     );
 }
 
+function ContributorStub(props){
+    return (
+        <div className='contributor_wrapper'>
+            <a href={props.html_url} className='flex contributor_link clean'>
+                <img src={props.avatar_url} alt={`github avatar: ${props.login}`} className='contributor_avatar'/>
+                <h5>{props.login}</h5>
+            </a>
+        </div>
+    );
+}
+
 function ProjectPage(props){
     const [projectData, setProjectData] = useState({});
     const [contributorData, setContributorData] = useState([]);
@@ -70,9 +81,9 @@ function ProjectPage(props){
             </p>
             <br />
             <br />
-            <div className='flex col left'>
+            <div className='flex col left inherit-width'>
                 <h3>Top contributors:</h3>
-                <div className='flex'>
+                <div>
                     {contributorData.map(e => <ContributorStub {...e} />)}
                 </div>
             </div>
