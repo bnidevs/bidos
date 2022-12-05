@@ -34,7 +34,36 @@ router.get('/', async function(req, res, next) {
             message: error.toString()
         });
     }
+});
 
+router.get('/search', async function(req, res, next) {
+    try{
+        const projectParams = {
+            TableName: 'bidos-projects',
+            IndexName : 'project_name-index',
+            KeyConditionExpression: 'project_name = :project_name',
+            ExpressionAttributeValues: {
+                ":project_name": {'S' : req.query.name}
+            },
+            ProjectionExpression: "project_name, tagline, project_pool, description, vis"
+        };
+
+        await db.query(projectParams, (err, data)=>{
+            if(err){
+                console.log(err);
+                throw new Error(err.toString());
+            }
+            res.status(200).send({
+                status: "success",
+                projects: data
+            });
+        });
+    }catch(error){
+        res.status(500).send({
+            status: "error",
+            message: error.toString()
+        });
+    }
 });
 
 module.exports = router;
