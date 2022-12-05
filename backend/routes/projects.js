@@ -37,6 +37,14 @@ router.get('/', async function(req, res, next) {
 });
 
 router.get('/search', async function(req, res, next) {
+    if(!'name' in req.query){
+        res.status(500).send({
+            status: "error",
+            message: "no args"
+        });
+        return;
+    }
+
     try{
         const projectParams = {
             TableName: 'bidos-projects',
