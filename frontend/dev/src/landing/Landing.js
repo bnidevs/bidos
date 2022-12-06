@@ -8,7 +8,8 @@ function LandingPage(){
             <div className="content">
                 <div className="textBox">
                     <h2>Welcome to <span>bidOS</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <p className = "blurb">
+                    Open source is free. Always has been. What if we could change that? What if we could give everyone what they want? designers, investors, developers, power users, prosumers, the average joe. bidOS is paving the way for people with ideas to get the resources they need to bring them to life.
                     </p>
                 </div>
             </div>                 
