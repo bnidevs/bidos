@@ -7,6 +7,10 @@
     font-size: medium;
 }
 
+.proj_img {
+    width: 200px;
+}
+
 .contributor_avatar {
     width: 50px;
     border-radius: 50%;

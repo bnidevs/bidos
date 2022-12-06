@@ -47,7 +47,11 @@ function ProjectPage(props){
                 .then(repo_link => {
                     fetch(`https://api.github.com/repos/${repo_link.split('.com/')[1]}/contributors`)
                         .then(resp => resp.json())
-                        .then(contributors => contributors.sort((a, b) => b.contributions - a.contributions))
+                        .then(contributors => contributors.sort(
+                            (a, b) => b.contributions - a.contributions
+                            ).filter(
+                                (x) => !x.login.includes('[bot]')
+                            ))
                         .then(lst => lst.slice(0,10))
                         .then(top10 => setContributorData(top10));
                 });
@@ -64,6 +68,7 @@ function ProjectPage(props){
       <section className='projects_main'>
           <PageHeader />
           <div className="content">
+            {'logo_link' in projectData ? <img src={projectData.logo_link} className='proj_img'/> : ''}
             <h1>{projectData.project_name}</h1>
             <h3>{projectData.tagline}</h3>
             <h3>Pool: {currency_format.format(projectData.project_pool)}</h3>
