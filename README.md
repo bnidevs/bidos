@@ -1,3 +1,5 @@
+![](https://github.com/bnidevs/bidos/blob/main/frontend/dev/src/static/logo.png?raw=true)
+
 # bidOS
 
 ### Crowdfunding open source
