@@ -52,8 +52,7 @@ router.get('/search', async function(req, res, next) {
             KeyConditionExpression: 'project_name = :project_name',
             ExpressionAttributeValues: {
                 ":project_name": {'S' : req.query.name}
-            },
-            ProjectionExpression: "project_name, tagline, project_pool, description, vis, repo_link"
+            }
         };
 
         await db.query(projectParams, (err, data)=>{
