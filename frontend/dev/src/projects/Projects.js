@@ -1,6 +1,7 @@
 import './Projects.css';
 import { PageHeader } from '../components/Parts';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import fuzzysort from 'fuzzysort';
 
 function Switcher(){
     const logged_in = false;
@@ -23,12 +24,43 @@ function Switcher(){
     );
 }
 
-function ProjectsList(){
-    const [projects, setProjects] = useState([]);
+function ProjectsList(props){
+    const [filtered, setFiltered] = useState(props.projList);
+    const [searchVal, setSearchVal] = useState('');
     const currency_format = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
     });
+
+    function SearchField(props){
+        const inputRef = useRef();
+
+        const updateVal = async () => {
+            const val = inputRef.current.value;
+            setSearchVal(val);
+            setFiltered(
+                fuzzysort.go(val, props.projList, 
+                    {keys: ['project_name', 'tagline'], all: true, threshold:-500}
+                ).map(elem => elem.obj)
+            );
+        };
+
+        useEffect(() => {
+            inputRef.current.focus();
+        }, []);
+
+        return (
+            <input 
+                type="text" 
+                name="search" 
+                onChange={updateVal} 
+                className='proj_search' 
+                placeholder='Search' 
+                defaultValue={searchVal}
+                ref={inputRef}
+            />
+        );
+    }
 
     useEffect(() => {
         fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects')
@@ -45,15 +77,20 @@ function ProjectsList(){
                     return el;
                 });
             })
-            .then(cleaned => {setProjects(cleaned)});
-    });
+            .then(cleaned => {
+                setFiltered(cleaned);
+            });
+    }, []);
 
     return(
-        <div className="project_list">
-            {projects.map((project) => (
-                <ProjectCard name={project.project_name} tagline={project.tagline} pool={currency_format.format(project.project_pool)}/>
-            ))}
-        </div>
+        <>
+            <SearchField projList={props.projList}/>
+            <div className="project_list">
+                {filtered.map((project) => (
+                    <ProjectCard name={project.project_name} tagline={project.tagline} pool={currency_format.format(project.project_pool)}/>
+                ))}
+            </div>
+        </>
     );
 }
 
@@ -93,16 +130,38 @@ function ProjectCard(props){
     );
 }
 
-function ProjectsPage(props){
-  return(
-    <section className='projects_main'>
-        <PageHeader />
-        <div className="content">
-            <Switcher />
-            <ProjectsList />
-        </div>                 
-    </section>
-  );
+function ProjectsPage(){
+    const [projects, setProjects] = useState([]);
+
+    useEffect(() => {
+        fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects')
+            .then(resp => resp.json())
+            .then(obj => obj['projects']['Items'])
+            .then(data => {
+                return data.map(el => {
+                    for(let k in el){
+                        el[k] = Object.values(el[k])[0];
+                        if(k === 'project_pool'){
+                            el[k] = parseFloat(el[k]);
+                        }
+                    }
+                    return el;
+                });
+            })
+            .then(cleaned => {
+                setProjects(cleaned);
+            });
+    }, []);
+
+    return(
+        <section className='projects_main'>
+            <PageHeader />
+            <div className="content">
+                <Switcher />
+                <ProjectsList projList={projects}/>
+            </div>                 
+        </section>
+    );
 }
 
 export {ProjectsPage}

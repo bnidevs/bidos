@@ -78,3 +78,9 @@
 .project_list{
     overflow-y: auto;
 }
+
+.proj_search{
+    border-radius: 20px;
+    margin: 10px !important;
+    width: 200px;
+}
