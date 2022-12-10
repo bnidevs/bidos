@@ -24,9 +24,20 @@ function ContributorStub(props){
     );
 }
 
+function IssueStub(props){
+    return (
+        <div className='issue_wrapper'>
+            <a href={props.html_url} className='flex contributor_link clean'>
+                <h5>{props.title}</h5>
+            </a>
+        </div>
+    );
+}
+
 function ProjectPage(props){
     const [projectData, setProjectData] = useState({});
     const [contributorData, setContributorData] = useState([]);
+    const [issueData, setIssueData] = useState([]);
 
     useEffect(() => {
         const t = async () => {
@@ -51,8 +62,15 @@ function ProjectPage(props){
                             ).filter(
                                 (x) => !x.login.includes('[bot]')
                             ))
+                        .then(lst => lst.slice(0,5))
+                        .then(top5 => setContributorData(top5));
+                    return repo_link;
+                })
+                .then(repo_link => {
+                    fetch(`https://api.github.com/repos/${repo_link.split('.com/')[1]}/issues?state=open`)
+                        .then(resp => resp.json())
                         .then(lst => lst.slice(0,10))
-                        .then(top10 => setContributorData(top10));
+                        .then(top10 => setIssueData(top10));
                 });
         };
         t();
@@ -64,7 +82,7 @@ function ProjectPage(props){
     });
 
     return(
-      <section className='projects_main'>
+      <section className='project_page_main'>
           <PageHeader />
           <div className="left_sidebar">
             {'logo_link' in projectData ? <img src={projectData.logo_link} className='proj_img'/> : ''}
@@ -85,11 +103,14 @@ function ProjectPage(props){
                     {contributorData.map(e => <ContributorStub {...e} />)}
                 </div>
             </div>
-            <br />
-          </div>    
+            <br />  
+          </div>
           <div className='project-timeline'>
-            {/* epic timeline of the projects progress to come */}
-          </div>             
+                <h3>
+                    Recent Issues
+                </h3>
+                {issueData.map(e => <IssueStub {...e}/>)}
+        </div>               
       </section>
     );
 }

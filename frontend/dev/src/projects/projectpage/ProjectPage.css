@@ -1,3 +1,18 @@
+.project_page_main{
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    background: linear-gradient(45deg, #414141, #000000);
+    width: 100vw;
+}
+
+.project-timeline{
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
 .project_footer_button {
     outline: 2px solid black;
     border: none;
@@ -66,6 +81,13 @@
     border-radius: 50%;
     border: 3px solid black;
     align-self: center;
+}
+
+.issue_wrapper {
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
 }
 
 .inherit-width {
