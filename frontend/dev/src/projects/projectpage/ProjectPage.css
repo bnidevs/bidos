@@ -14,6 +14,7 @@
 }
 
 .project_footer_button {
+    background-color: black;
     outline: 2px solid black;
     border: none;
     padding: 10px;
