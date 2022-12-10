@@ -6,8 +6,7 @@ function RepoBtn(props){
     return (
         <a href={props.link}>
             <button
-                className='project_footer_button'
-            >
+                className='project_footer_button'>
                 <i className="fa fa-github fa-lg" ></i>
             </button>
         </a>
@@ -67,8 +66,11 @@ function ProjectPage(props){
     return(
       <section className='projects_main'>
           <PageHeader />
-          <div className="content">
+          <div className="left_sidebar">
             {'logo_link' in projectData ? <img src={projectData.logo_link} className='proj_img'/> : ''}
+            <div className='flex'>
+                <RepoBtn link={projectData.repo_link} />
+            </div>
             <h1>{projectData.project_name}</h1>
             <h3>{projectData.tagline}</h3>
             <h3>Pool: {currency_format.format(projectData.project_pool)}</h3>
@@ -84,10 +86,10 @@ function ProjectPage(props){
                 </div>
             </div>
             <br />
-            <div className='flex'>
-                <RepoBtn link={projectData.repo_link} />
-            </div>
-          </div>                 
+          </div>    
+          <div className='project-timeline'>
+            {/* epic timeline of the projects progress to come */}
+          </div>             
       </section>
     );
 }

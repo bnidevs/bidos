@@ -1,10 +1,17 @@
 .project_footer_button {
-    background: transparent;
-    outline: 2px solid white;
+    outline: 2px solid black;
     border: none;
     padding: 10px;
     border-radius: 10px;
     font-size: medium;
+    position: absolute;
+    top: 170px;
+    left: 230px;
+}
+
+.project_footer_button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 .proj_img {
@@ -27,7 +34,7 @@
 
 .clean {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .col {
@@ -42,8 +49,23 @@
     align-items: flex-end;
 }
 
-.content {
-    width: 80vw;
+.left_sidebar {
+    padding: 10px;
+    background-color: aliceblue;
+    width: 20vw;
+
+    border-radius: 10px;
+    border: 3px solid black;
+    position: relative;
+}
+
+.proj_img {
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 50%;
+    border: 3px solid black;
+    align-self: center;
 }
 
 .inherit-width {
