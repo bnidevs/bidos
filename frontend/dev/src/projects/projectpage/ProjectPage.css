@@ -20,17 +20,17 @@
     border-radius: 10px;
     font-size: medium;
     position: absolute;
-    top: 170px;
-    left: 230px;
+    right: 0;
+    bottom: 0;
+}
+
+.image_wrapper{
+    position: relative;
 }
 
 .project_footer_button:hover{
     cursor: pointer;
     transform: scale(1.05);
-}
-
-.proj_img {
-    width: 200px;
 }
 
 .contributor_avatar {
@@ -75,6 +75,10 @@
 }
 
 .proj_img {
+    background-color: black;
+    object-fit: contain;
+    width: 200px;
+    height: 200px;
     display: block;
     margin-left:auto;
     margin-right:auto;
