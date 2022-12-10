@@ -3,3 +3,11 @@
     background: linear-gradient(45deg, #414141, #000000);
     width: 100vw;
 }
+
+.textBox_wrapper{
+    max-width: 600px;
+}
+
+.blurb{
+
+}
