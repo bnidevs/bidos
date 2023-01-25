@@ -1,0 +1,11 @@
+.home_main {
+    color: white;
+    background: linear-gradient(45deg, #414141, #000000);
+    width: 100vw;
+    height: 100vh;
+    /* display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    align-items: center; */
+}
