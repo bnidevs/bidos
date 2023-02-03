@@ -17,3 +17,7 @@ background: linear-gradient(90deg, rgba(109,65,238,1) 0%, rgba(154,79,255,1) 100
 .clickable {
     cursor: pointer;
 }
+
+.shadow {
+    box-shadow: 0px 0px 5px grey;
+}

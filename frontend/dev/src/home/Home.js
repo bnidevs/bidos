@@ -2,6 +2,7 @@ import "./Home.css";
 import { PageHeader } from "../components/Parts";
 import { ProjectCard } from "../projects/Projects";
 import Commits from "./Commits";
+import StatButton from "./StatButton";
 
 function HomePage() {
   const commits = [
@@ -125,12 +126,13 @@ function HomePage() {
                     time={time}
                     title={title}
                     hideBottomBorder={
-                      index == commits.length - 1 ? false : true
+                      index === commits.length - 1 ? false : true
                     }
                   />
                 );
               })}
             </div>
+            <StatButton onClickHandler={() => console.log("Showing stats")} />
           </div>
         </div>
       </div>
