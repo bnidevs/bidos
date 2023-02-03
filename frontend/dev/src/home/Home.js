@@ -3,8 +3,14 @@ import { PageHeader } from "../components/Parts";
 import { ProjectCard } from "../projects/Projects";
 import Commits from "./Commits";
 import StatButton from "./StatButton";
+import { useState } from "react";
+import Stats from "./Stats";
 
 function HomePage() {
+  const [state, setState] = useState({
+    showStats: false,
+  });
+
   const commits = [
     {
       title:
@@ -29,7 +35,7 @@ function HomePage() {
   return (
     <section className="home_main">
       <PageHeader />
-      <div style={{ display: "flex", flexDirection: "column", flex: 2 }}>
+      <div style={{ display: "flex", flexDirection: "column", flex: 3 }}>
         <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
           <div
             style={{
@@ -132,7 +138,29 @@ function HomePage() {
                 );
               })}
             </div>
-            <StatButton onClickHandler={() => console.log("Showing stats")} />
+          </div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
+          <div
+            style={{
+              height: "75%",
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <StatButton
+              onClickHandler={() =>
+                setState({ ...state, showStats: !state.showStats })
+              }
+            />
+            {state.showStats && (
+              <>
+                <h1 style={{ marginTop: 100 }}>Last Week's Stats</h1>
+                <Stats />
+              </>
+            )}
           </div>
         </div>
       </div>

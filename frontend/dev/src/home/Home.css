@@ -2,12 +2,6 @@
     color: white;
     background: linear-gradient(45deg, #414141, #000000);
     width: 100vw;
-    /* height: 100vh; */
-    /* display: flex;
-    flex-direction: row;
-    flex: 1;
-    justify-content: center;
-    align-items: center; */
 }
 
 .commitsCard {
@@ -21,3 +15,7 @@ background: linear-gradient(90deg, rgba(109,65,238,1) 0%, rgba(154,79,255,1) 100
 .shadow {
     box-shadow: 0px 0px 5px grey;
 }
+
+.statsCard {
+
+    background: linear-gradient(121deg, rgba(72, 76, 79, 1) 45%, #56606b 100%);}

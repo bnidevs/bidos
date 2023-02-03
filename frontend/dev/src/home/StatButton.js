@@ -19,7 +19,7 @@ const StatButton = ({ onClickHandler }) => {
         alignItems: "center",
         backgroundColor: "dodgerblue",
         borderRadius: 7,
-        marginTop: 50,
+        marginTop: 100,
       }}
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
