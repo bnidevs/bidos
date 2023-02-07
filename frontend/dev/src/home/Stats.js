@@ -1,8 +1,9 @@
+import ProgressGraph from "./ProgressGraph";
+
 const Stats = () => {
   return (
     <div
       style={{
-        backgroundColor: "grey",
         marginTop: 50,
         height: "40vh",
         width: "80vw",
@@ -40,7 +41,9 @@ const Stats = () => {
             flex: 0.7,
             // backgroundColor: "red",
           }}
-        ></div>
+        >
+          <ProgressGraph />
+        </div>
       </div>
     </div>
   );

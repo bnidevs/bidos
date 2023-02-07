@@ -17,5 +17,6 @@ background: linear-gradient(90deg, rgba(109,65,238,1) 0%, rgba(154,79,255,1) 100
 }
 
 .statsCard {
-
-    background: linear-gradient(121deg, rgba(72, 76, 79, 1) 45%, #56606b 100%);}
+    background: linear-gradient(121deg, rgba(72, 76, 79, 1) 45%, #56606b 100%);
+    /* background: linear-gradient(121deg, rgba(0, 183, 255, 1) 45%, rgba(7, 125, 255, 1) 100%); */
+}
