@@ -3,6 +3,39 @@ import { PageHeader } from '../components/Parts';
 import { useEffect, useState, useRef } from 'react';
 import fuzzysort from 'fuzzysort';
 
+function CreateProject(){
+    const project = {
+        githubLink: "",
+        Email: "",
+        lookingFor: 0,
+      };
+    return(        
+        <button onclick="getInfo()"> 
+            <h3>Create Project</h3>
+        </button>
+    );
+}
+
+function getInfo(){
+    return(
+        <h3>
+            <input 
+                type="text" 
+                name="search" 
+                placeholder='Search' 
+            />
+            <input 
+                type="text" 
+                name="search" 
+                placeholder='Search' 
+            />
+            <button > 
+                <h3> Publish</h3>
+            </button>
+        </h3>
+    );
+}
+
 function Switcher(){
     const logged_in = false;
 
@@ -157,7 +190,8 @@ function ProjectsPage(){
         <section className='projects_main'>
             <PageHeader />
             <div className="content">
-                <Switcher />
+                <Switcher /> 
+                <CreateProject />
                 <ProjectsList projList={projects}/>
             </div>                 
         </section>
