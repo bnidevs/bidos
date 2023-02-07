@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:  
+  install:
+    commands:
+      - cd frontend/dev; npm install; pwd
+  build:
+    commands:
+      - npm run build; pwd
+artifacts:
+  files:
+    - frontend/dev/build/*
+    - frontend/dev/build/**/*
