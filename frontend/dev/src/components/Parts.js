@@ -22,6 +22,7 @@ function PageHeader(props){
                 <NavBar displayString="Projects" linkPath="/projects"/>
                 <NavBar displayString="About" linkPath="/about"/>
                 <NavBar displayString="Contact" linkPath="/contact"/>
+                <NavBar displayString="Account" linkPath="/account"/>
                 <NavButton displayString="Login" linkPath="/login"/>
             </ul>
         </header>

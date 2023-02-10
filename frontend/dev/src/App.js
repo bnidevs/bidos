@@ -5,12 +5,14 @@ import { ProjectsPage } from './projects/Projects';
 import { ProjectPage } from './projects/projectpage/ProjectPage';
 import { ContactPage } from './contact/Contact';
 import { AboutPage } from './about/About';
+import { AccountPage } from "./account/Account";
 
 import './login/Login.css';
 import './landing/Landing.css';
 import './projects/Projects.css';
 import './contact/Contact.css';
 import './about/About.css';
+import './account/Account.css';
 
 const getUrlParts = url => url.split("/").filter(Boolean);
 
@@ -22,6 +24,7 @@ function App() {
         '/about': AboutPage,
         '/project/:projectName': ProjectPage,
         '/projects': ProjectsPage,
+        '/account': AccountPage,
         '': LandingPage    
     }), []);
 
@@ -50,7 +53,7 @@ function App() {
         const Page =  paths[pagePath];
 
         return {Page, variables};
-    }, []);
+    }, [pathnameParts, paths]);
 
     return <Page  {...variables}/>
 }

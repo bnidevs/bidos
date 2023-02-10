@@ -1,0 +1,36 @@
+.account_main {
+    color:white;
+    background: linear-gradient(45deg, #414141, #000000);
+    width: 100vw;
+    overflow-x: hidden;
+    justify-content: center;
+}
+section .account_body {
+    overflow-x: hidden;
+    width: 100vw;
+    padding: 0;
+}
+.account_details_list {
+    padding-left: 100px;
+    padding-top: 100px;
+    padding-right: 0;
+    padding-bottom: 0;
+    display: inline-block;
+}
+.payment_methods_list {
+    padding-left: 100px;
+    padding-top: 100px;
+    padding-right: 0;
+    padding-bottom: 0;
+    display: inline-block;
+}
+.project_contributions_list {
+    padding-left: 100px;
+    padding-top: 100px;
+    padding-right: 0;
+    padding-bottom: 0;
+    display: inline-block;
+}
+.list_title {
+    font-size: 3vmax;
+}
