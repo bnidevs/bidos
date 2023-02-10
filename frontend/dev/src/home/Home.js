@@ -80,6 +80,18 @@ function HomePage() {
             >
               What You've Funded
             </h1>
+            <div
+              style={{
+                height: 300,
+                width: 425,
+                overflowY: "auto",
+              }}
+            >
+              <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
+              <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
+              <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
+              <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
+            </div>
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
@@ -98,6 +110,42 @@ function HomePage() {
             >
               Latest Issues
             </h1>
+            <div className="project-timeline">
+              <h3 style={{ color: "black" }}>Recent Issues</h3>
+              <div className="issue_wrapper">
+                <a
+                  href="https://localhost:3000"
+                  className="flex contributor_link clean"
+                >
+                  <h5>
+                    Fixed issues with package.json and prevented code from
+                    breaking
+                  </h5>
+                </a>
+              </div>
+              <div className="issue_wrapper">
+                <a
+                  href="https://localhost:3000"
+                  className="flex contributor_link clean"
+                >
+                  <h5>
+                    Fixed issues with package.json and prevented code from
+                    breaking
+                  </h5>
+                </a>
+              </div>
+              <div className="issue_wrapper">
+                <a
+                  href="https://localhost:3000"
+                  className="flex contributor_link clean"
+                >
+                  <h5>
+                    Fixed issues with package.json and prevented code from
+                    breaking
+                  </h5>
+                </a>
+              </div>
+            </div>
           </div>
           <div
             style={{
