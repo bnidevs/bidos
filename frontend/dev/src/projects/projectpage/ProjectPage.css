@@ -66,6 +66,7 @@
 }
 
 .left_sidebar {
+    margin-right: 20px;
     padding: 10px;
     background-color: aliceblue;
     width: 20vw;
