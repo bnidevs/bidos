@@ -15,4 +15,4 @@ Bill Ni, Isaac Efrosman, Nashwan Habboosh, Simon Sandrew, Ronglin Chen, Mohammed
 
 For additional information, see [/docs](https://github.com/bnidevs/bidos/tree/main/docs)
 
-#### Built with [Pipedream](https://pipedream.com)
+#### Built with [Pipedream](https://pipedream.com), [AWS](https://aws.amazon.com/)
