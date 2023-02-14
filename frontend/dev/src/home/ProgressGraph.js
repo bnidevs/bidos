@@ -26,6 +26,10 @@ export const options = {
   plugins: {
     legend: {
       position: "top",
+      labels: {
+        fontColor: "white",
+        fontSize: 15,
+      },
     },
     title: {
       display: true,

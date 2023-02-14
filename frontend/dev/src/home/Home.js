@@ -119,29 +119,7 @@ function HomePage() {
                 >
                   <h5>
                     Fixed issues with package.json and prevented code from
-                    breaking
-                  </h5>
-                </a>
-              </div>
-              <div className="issue_wrapper">
-                <a
-                  href="https://localhost:3000"
-                  className="flex contributor_link clean"
-                >
-                  <h5>
-                    Fixed issues with package.json and prevented code from
-                    breaking
-                  </h5>
-                </a>
-              </div>
-              <div className="issue_wrapper">
-                <a
-                  href="https://localhost:3000"
-                  className="flex contributor_link clean"
-                >
-                  <h5>
-                    Fixed issues with package.json and prevented code from
-                    breaking
+                    breaking{" "}
                   </h5>
                 </a>
               </div>
@@ -157,7 +135,7 @@ function HomePage() {
             }}
           >
             <h1
-              className="animate__animated animate__fadeInLeft"
+              className="animate__animated animate__fadeInRight"
               style={{ fontSize: 30, margin: 30 }}
             >
               Latest Commits

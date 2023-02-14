@@ -29,12 +29,13 @@
 }
 
 .project_card{
-    background-color: antiquewhite;
-    width: 40vh;
+    /* background-color: antiquewhite; */
+    background: linear-gradient(121deg, rgba(216, 244, 255, 1) 45%, rgba(236, 245, 255, 1) 100%);    width: 40vh;
     height: 20vh;
     min-width: 400px;
     min-height: 150px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
+    border-radius: 15px;
 
     padding: 2vh;
 
