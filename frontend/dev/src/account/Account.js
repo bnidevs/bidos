@@ -1,5 +1,6 @@
 import './Account.css';
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {PageHeader} from '../components/Parts';
 import { Typography, Tabs, Tab, Box } from '@mui/material';
@@ -37,7 +38,10 @@ function a11yProps(index) {
     };
 }
 
-function AccountDetails(){
+function AccountDetails( editing ){
+    const [canEdit, setEdit] = useState(0);
+
+
     return(
         <section className='account_details_list'>
             <ul className='account_details'>
@@ -47,7 +51,82 @@ function AccountDetails(){
                 <li>Address: 1 Main Street</li>
             </ul>
         </section>
-    )
+    );
+}
+
+function ProjectCardButton(props){
+    let projNameCleaned = '#';
+    if(props.link){
+        projNameCleaned = `/project/${props.link.replace(/ /g, '_')}`;
+    }
+
+    return(
+        <a href={projNameCleaned}>
+            <button className="project_card_btn">
+                <h4 className="fonted">{props.text}</h4>
+            </button>
+        </a>
+    );
+}
+
+function ProjectCard(props){
+    return(
+        <div className="project_card_wrapper">
+            <div className="project_card">
+                <div className="flex spread_out">
+                    <h2>{props.name}</h2>
+                    <h4 className="project_pool">Pool: {props.pool}</h4>
+                </div>
+                <div>
+                    <p>{props.tagline}</p>
+                </div>
+                <div className="spacer"></div>
+                <div className="card_footer flex spread_out">
+                    <ProjectCardButton text="Details" link={props.name}/>
+                    <ProjectCardButton text="Fund" />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function Contributions(props){
+    const [filtered, setFiltered] = useState(props.projList);
+    const [searchVal, setSearchVal] = useState('');
+    const currency_format = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+
+    useEffect(() => {
+        fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects')
+            .then(resp => resp.json())
+            .then(obj => obj['projects']['Items'])
+            .then(data => {
+                return data.map(el => {
+                    for(let k in el){
+                        el[k] = Object.values(el[k])[0];
+                        if(k === 'project_pool'){
+                            el[k] = parseFloat(el[k]);
+                        }
+                    }
+                    return el;
+                });
+            })
+            .then(cleaned => {
+                setFiltered(cleaned);
+            });
+    }, []);
+
+    return(
+        <>
+            <div className="project_list">
+                {filtered.map((project) => (
+                    <ProjectCard name={project.project_name} tagline={project.tagline} pool={currency_format.format(project.project_pool)}/>
+                ))}
+            </div>
+        </>
+    );
 }
 
 function PaymentMethods(){
@@ -55,34 +134,46 @@ function PaymentMethods(){
         <section className='payment_methods_list'>
             <ul className='payment_methods'>
                 <li className='list_title'>Card Information</li>
-                <li>Card Brand: Visa</li>
-                <li>Card Name: Jonny Appleseed</li>
+                <li>
+                    Card Number: <input type='text' value='1234 5678 9012 3456' />
+                </li>
+                <li>
+                    Card Name: <input type='text' value='Johnny Appleseed' />
+                </li>
                 <li>Card Number: 0000 1111 2222 3333</li>
                 <li>Expiration Date: 1/99</li>
             </ul>
         </section>
-    )
-}
-
-function Contributions(){
-    return(
-        <section className='project_contributions_list'>
-            <ul className='project_contributions'>
-                <li className='list_title'>Project Contributions</li>
-                <li>Project 1 (will be a project card)</li>
-                <li>Project 2 (will be a project card)</li>
-                <li>Project 3 (will be a project card)</li>
-            </ul>
-        </section>
-    )
+    );
 }
 
 function AccountPage(){
     const [value, setValue] = React.useState(0);
-
+    const [projects, setProjects] = useState([]);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     }
+
+    useEffect(() => {
+        fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects')
+            .then(resp => resp.json())
+            .then(obj => obj['projects']['Items'])
+            .then(data => {
+                return data.map(el => {
+                    for(let k in el){
+                        el[k] = Object.values(el[k])[0];
+                        if(k === 'project_pool'){
+                            el[k] = parseFloat(el[k]);
+                        }
+                    }
+                    return el;
+                });
+            })
+            .then(cleaned => {
+                setProjects(cleaned);
+            });
+    }, []);
+
 
     return(
         <section className='account_main'>
@@ -98,18 +189,18 @@ function AccountPage(){
                     aria
                     >
                         <Tab label="Account Details" {...a11yProps(0)} />
-                        <Tab label="Payment Methods" {...a11yProps(1)} />
-                        <Tab label="Contributions" {...a11yProps(2)} />
+                        <Tab label="Contributions" {...a11yProps(1)} />
+                        <Tab label="Payment Methods" {...a11yProps(2)} />
                     </Tabs>
                 </Box>
                 <TabPanel value={value} index={0}>
                     <AccountDetails />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <PaymentMethods />
+                    <Contributions projList={projects}/>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    <Contributions />
+                    <PaymentMethods />
                 </TabPanel>
             </section>
         </section>
