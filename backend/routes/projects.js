@@ -74,34 +74,4 @@ router.get('/search', async function(req, res, next) {
 
 
 
-router.write('/', async function(req, res, next) {
-    try{
-        const FundParameter = {
-            TableName: 'bidos-projects',
-            IndexName : 'fund_number',
-            KeyConditionExpression: 'fund_number = :fund_number+1',
-            ExpressionAttributeValues: {
-                ":fund_number": {'S' : req.query}
-            },
-            ProjectionExpression: "project_name, tagline, project_pool"
-        };
-
-        await db.putItem(FundParameter, (err, data)=>{
-            if(err){
-                console.log(err);
-                throw new Error(err.toString());
-            }
-            res.status(200).send({
-                status: "success",
-                projects: data
-            });
-        });
-    }catch(error){
-        res.status(500).send({
-            status: "error",
-            message: error.toString()
-        });
-    }
-});
-
 module.exports = router;
