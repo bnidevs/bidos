@@ -46,9 +46,15 @@ function AccountDetails( editing ){
         <section className='account_details_list'>
             <ul className='account_details'>
                 <li className='list_title'>Jonny Appleseed</li>
-                <li>Phone: (123) 456-7890</li>
-                <li>Email: user@example.com</li>
-                <li>Address: 1 Main Street</li>
+                <li>
+                    Phone: <input type='text' placeholder='(123) 456-7890' />
+                </li>
+                <li>
+                    Email: <input type='text' placeholder='example@email.com' />
+                </li>
+                <li>
+                    Address: <input type='text' placeholder='1 Main Street' />
+                </li>
             </ul>
         </section>
     );
@@ -92,7 +98,6 @@ function ProjectCard(props){
 
 function Contributions(props){
     const [filtered, setFiltered] = useState(props.projList);
-    const [searchVal, setSearchVal] = useState('');
     const currency_format = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
@@ -135,13 +140,14 @@ function PaymentMethods(){
             <ul className='payment_methods'>
                 <li className='list_title'>Card Information</li>
                 <li>
-                    Card Number: <input type='text' value='1234 5678 9012 3456' />
+                    Card Number: <input type='text' placeholder='1234 5678 9012 3456' />
                 </li>
                 <li>
-                    Card Name: <input type='text' value='Johnny Appleseed' />
+                    Card Name: <input type='text' placeholder='Johnny Appleseed' />
                 </li>
-                <li>Card Number: 0000 1111 2222 3333</li>
-                <li>Expiration Date: 1/99</li>
+                <li>
+                    Expiration Date: <input type='date' />
+                </li>
             </ul>
         </section>
     );
