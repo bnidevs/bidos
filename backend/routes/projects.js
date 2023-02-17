@@ -71,5 +71,4 @@ router.get('/search', async function(req, res, next) {
         });
     }
 });
-
 module.exports = router;
