@@ -1,5 +1,12 @@
-.about_main{
-    color:white;
-    background: linear-gradient(45deg, #414141, #000000);
-    width: 100vw;
-}
+  .about-section {
+    padding: 250px;
+    text-align: center;
+    background: linear-gradient(180deg, #414141, #000000);
+    color: white;
+    overflow-y: hidden;
+    font-family: 'Poppins' , sans-serif;
+   
+  }
+ 
+  
+  
