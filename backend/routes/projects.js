@@ -1,10 +1,13 @@
-const AWS = require('aws-sdk');
+const AWS = require('aws-sdk'),
+      {
+          DynamoDB
+      } = require("@aws-sdk/client-dynamodb");
 AWS.config.update({region: 'us-east-1'});
 const gen = require('crypto');
 const express = require('express');
 const router = express.Router();
 
-const db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+const db = new DynamoDB({apiVersion: '2012-08-10'});
 
 router.get('/', async function(req, res, next) {
     try{
