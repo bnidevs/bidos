@@ -3,15 +3,19 @@ import { PageHeader } from "../components/Parts";
 import { ProjectCard } from "../projects/Projects";
 import Commits from "./Commits";
 import StatButton from "./StatButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Stats from "./Stats";
+import { CircleLoader } from "react-spinners";
+import axios from "axios";
 
 function HomePage() {
   const [state, setState] = useState({
     showStats: false,
   });
 
-  const commits = [
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [commits, setCommits] = useState([
     {
       title:
         "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
@@ -30,7 +34,44 @@ function HomePage() {
       author: "DJ Raamzeez",
       time: "2 days ago",
     },
-  ];
+  ]);
+
+  const loadingStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  };
+
+  const defaultStyle = {
+    height: 212,
+    width: 400,
+    backgroundColor: "white",
+    borderRadius: 10,
+    overflowY: "auto",
+  };
+
+  useEffect(() => {
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:3000/projects/commits",
+    //     {
+    //       user: "i'lladditlater",
+    //       repo: "i'llalsoaddthislater",
+    //     }
+    //   );
+    //   if (!response.status) {
+    //     console.error(response.data);
+    //     setError(response.data);
+    //     setLoading(false);
+    //   }
+    //   console.log("commits", response.data);
+    //   setCommits(response.data);
+    //   setLoading(false);
+    // } catch (err) {
+    //   setError(err);
+    //   setLoading(false);
+    // }
+  }, []);
 
   return (
     <section className="home_main">
@@ -141,28 +182,31 @@ function HomePage() {
               Latest Commits
             </h1>
             <div
-              style={{
-                height: 212,
-                width: 400,
-                backgroundColor: "white",
-                borderRadius: 10,
-                overflowY: "auto",
-              }}
+              style={
+                loading
+                  ? { ...defaultStyle, ...loadingStyle }
+                  : { ...defaultStyle }
+              }
               className="commitsCard gradient"
             >
-              {/* <Commits /> */}
-              {commits.map(({ author, time, title }, index) => {
-                return (
-                  <Commits
-                    author={author}
-                    time={time}
-                    title={title}
-                    hideBottomBorder={
-                      index === commits.length - 1 ? false : true
-                    }
-                  />
-                );
-              })}
+              {!loading ? (
+                <>
+                  {commits.map(({ author, time, title }, index) => {
+                    return (
+                      <Commits
+                        author={author}
+                        time={time}
+                        title={title}
+                        hideBottomBorder={
+                          index === commits.length - 1 ? false : true
+                        }
+                      />
+                    );
+                  })}
+                </>
+              ) : (
+                <CircleLoader size={100} color={"white"} />
+              )}
             </div>
           </div>
         </div>
