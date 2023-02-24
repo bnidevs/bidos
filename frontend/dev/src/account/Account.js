@@ -50,13 +50,13 @@ function AccountDetails(){
                 <li className='list_title'>Jonny Appleseed</li>
                 <li><button onClick={handleEditClick} >Edit</button></li>
                 <li>
-                    Phone: <input type='text' placeholder='(123) 456-7890' readOnly={canEdit} />
+                    Phone: <input type='text' placeholder='(123) 456-7890' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
                 </li>
                 <li>
-                    Email: <input type='text' placeholder='example@email.com' readOnly={canEdit} />
+                    Email: <input type='text' placeholder='example@email.com' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
                 </li>
                 <li>
-                    Address: <input type='text' placeholder='1 Main Street' readOnly={canEdit} />
+                    Address: <input type='text' placeholder='1 Main Street' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
                 </li>
             </ul>
         </section>
@@ -149,13 +149,13 @@ function PaymentMethods(){
                 <li className='list_title'>Card Information</li>
                 <li><button onClick={handleEditClick} >Edit</button></li>
                 <li>
-                    Card Number: <input type='text' placeholder='1234 5678 9012 3456' readOnly={canEdit} />
+                    Card Number: <input type='text' placeholder='1234 5678 9012 3456' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
                 </li>
                 <li>
-                    Card Name: <input type='text' placeholder='Johnny Appleseed' readOnly={canEdit} />
+                    Card Name: <input type='text' placeholder='Johnny Appleseed' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
                 </li>
                 <li>
-                    Expiration Date: <input type='date' readOnly={canEdit} />
+                    Expiration Date: <input type='date' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
                 </li>
             </ul>
         </section>

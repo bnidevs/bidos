@@ -34,3 +34,29 @@ section .account_body {
 .list_title {
     font-size: 3vmax;
 }
+.editing {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: white;
+    background-color: #282828;
+    padding: 7px 0;
+    transition: 0.2s;
+}
+.editing:placeholder-shown ~ .editing {
+    cursor: text;
+    top: 20px;
+}
+.notediting {
+    color: white;
+    border: none;
+    border-style: none;
+    background: transparent;
+    transition: 0.2s;
+}
+.notediting::placeholder {
+    color: transparent;
+}
