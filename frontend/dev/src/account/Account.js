@@ -38,22 +38,25 @@ function a11yProps(index) {
     };
 }
 
-function AccountDetails( editing ){
-    const [canEdit, setEdit] = useState(0);
-
+function AccountDetails(){
+    const [canEdit, setEdit] = useState(true);
+    function handleEditClick() {
+        setEdit(!canEdit);
+    }
 
     return(
         <section className='account_details_list'>
             <ul className='account_details'>
                 <li className='list_title'>Jonny Appleseed</li>
+                <li><button onClick={handleEditClick} >Edit</button></li>
                 <li>
-                    Phone: <input type='text' placeholder='(123) 456-7890' />
+                    Phone: <input type='text' placeholder='(123) 456-7890' readOnly={canEdit} />
                 </li>
                 <li>
-                    Email: <input type='text' placeholder='example@email.com' />
+                    Email: <input type='text' placeholder='example@email.com' readOnly={canEdit} />
                 </li>
                 <li>
-                    Address: <input type='text' placeholder='1 Main Street' />
+                    Address: <input type='text' placeholder='1 Main Street' readOnly={canEdit} />
                 </li>
             </ul>
         </section>
@@ -135,18 +138,24 @@ function Contributions(props){
 }
 
 function PaymentMethods(){
+    const [canEdit, setEdit] = useState(true);
+    function handleEditClick() {
+        setEdit(!canEdit);
+    }
+
     return(
         <section className='payment_methods_list'>
             <ul className='payment_methods'>
                 <li className='list_title'>Card Information</li>
+                <li><button onClick={handleEditClick} >Edit</button></li>
                 <li>
-                    Card Number: <input type='text' placeholder='1234 5678 9012 3456' />
+                    Card Number: <input type='text' placeholder='1234 5678 9012 3456' readOnly={canEdit} />
                 </li>
                 <li>
-                    Card Name: <input type='text' placeholder='Johnny Appleseed' />
+                    Card Name: <input type='text' placeholder='Johnny Appleseed' readOnly={canEdit} />
                 </li>
                 <li>
-                    Expiration Date: <input type='date' />
+                    Expiration Date: <input type='date' readOnly={canEdit} />
                 </li>
             </ul>
         </section>
