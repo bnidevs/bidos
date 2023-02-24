@@ -1,3 +1,6 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /           #To exclude all robots from the entire server
+Disallow: /cgi-bin/   #To exclude all robots from part of the server
+Disallow: /tmp/
+Disallow: /junk/
