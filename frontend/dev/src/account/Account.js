@@ -47,8 +47,12 @@ function AccountDetails(){
     return(
         <section className='account_details_list'>
             <ul className='account_details'>
-                <li className='list_title'>Jonny Appleseed</li>
-                <li><button onClick={handleEditClick} >Edit</button></li>
+                <li className='list_title_li'>
+                    <span className='list_title'>Johhny Appleseed</span>
+                    <button className='edit_btn' onClick={handleEditClick} >
+                    {canEdit ? "Edit" : "Save"}
+                    </button>
+                </li>
                 <li>
                     Phone: <input type='text' placeholder='(123) 456-7890' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
                 </li>
@@ -139,17 +143,38 @@ function Contributions(props){
 
 function PaymentMethods(){
     const [canEdit, setEdit] = useState(true);
-    function handleEditClick() {
+    const [useMasked, setUseMasked] = useState(false);
+    const [cardNumber, setCardNumber] = useState("");
+    const [maskedCardNumber, setMaskedCard] = useState("");
+    
+    function handleCardNumberChange(event) {
+        const newCardNumber = event.target.value;
+        if (newCardNumber.length <= 16) {
+            setCardNumber(newCardNumber);
+        }
+    }
+    function handleEditClick(event) {
+        event.preventDefault();
+        if ((cardNumber.length !== 16 && cardNumber.length !== 0) && !canEdit) {
+            alert("Please enter a 16-digit card number!");
+            return;
+        }
+        setMaskedCard("************" + cardNumber.slice(-4));
+        setUseMasked(!useMasked);
         setEdit(!canEdit);
     }
 
     return(
         <section className='payment_methods_list'>
             <ul className='payment_methods'>
-                <li className='list_title'>Card Information</li>
-                <li><button onClick={handleEditClick} >Edit</button></li>
+                <li className='list_title_li'>
+                <span className='list_title'>Card Information</span>
+                    <button className='edit_btn' onClick={handleEditClick} >
+                    {canEdit ? "Edit" : "Save"}
+                    </button>
+                </li>
                 <li>
-                    Card Number: <input type='text' placeholder='1234 5678 9012 3456' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
+                    Card Number: <input type='text' value={useMasked ? cardNumber : maskedCardNumber} onChange={handleCardNumberChange} placeholder='**** **** **** ****' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
                 </li>
                 <li>
                     Card Name: <input type='text' placeholder='Johnny Appleseed' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />

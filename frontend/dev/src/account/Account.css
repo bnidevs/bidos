@@ -31,8 +31,21 @@ section .account_body {
     padding-bottom: 0;
     display: inline-block;
 }
+.list_title_li {
+    display: flex;
+    align-items: center;
+}
 .list_title {
-    font-size: 3vmax;
+    font-size: 2vmax;
+}
+.edit_btn {
+    background: linear-gradient(45deg, #212121, #414141);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
 }
 .editing {
     font-family: inherit;
