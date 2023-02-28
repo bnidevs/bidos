@@ -1,5 +1,6 @@
   .about-section {
     padding: 250px;
+    padding-bottom: 500px;
     text-align: center;
     background: linear-gradient(180deg, #414141, #000000);
     color: white;
@@ -8,5 +9,24 @@
    
   }
  
+.break{
+  padding: 150;
+}
+
+  .TestBut {
+
+    text-decoration: none;
+    top:50%;
+    background-color:white;
+    color: black;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+    min-height:30px; 
+    min-width: 120px;
+  }
   
+  .TestBut:hover {
+    transform: scale(1.05);
+  }
   
