@@ -3,7 +3,7 @@ AWS.config.update({ region: "us-east-1" });
 const gen = require("crypto");
 const express = require("express");
 const router = express.Router();
-import { Octokit } from "octokit";
+const Octokit = require("octokit");
 
 const db = new AWS.DynamoDB({ apiVersion: "2012-08-10" });
 
@@ -172,6 +172,9 @@ router.post("/commits", async (req, res) => {
     {
       owner,
       repo,
+      headers: {
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
     }
   );
   if (response.status !== 200) {

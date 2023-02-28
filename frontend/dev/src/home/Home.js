@@ -15,26 +15,27 @@ function HomePage() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [commits, setCommits] = useState([
-    {
-      title:
-        "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
-      author: "DJ Raamzeez",
-      time: "2 days ago",
-    },
-    {
-      title:
-        "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
-      author: "DJ Raamzeez",
-      time: "2 days ago",
-    },
-    {
-      title:
-        "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
-      author: "DJ Raamzeez",
-      time: "2 days ago",
-    },
-  ]);
+  const [commits, setCommits] = useState([]);
+  // const [commits, setCommits] = useState([
+  //   {
+  //     title:
+  //       "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
+  //     author: "DJ Raamzeez",
+  //     time: "2 days ago",
+  //   },
+  //   {
+  //     title:
+  //       "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
+  //     author: "DJ Raamzeez",
+  //     time: "2 days ago",
+  //   },
+  //   {
+  //     title:
+  //       "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
+  //     author: "DJ Raamzeez",
+  //     time: "2 days ago",
+  //   },
+  // ]);
 
   const loadingStyle = {
     display: "flex",
@@ -50,27 +51,31 @@ function HomePage() {
     overflowY: "auto",
   };
 
+  const fetchCommits = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/projects/commits",
+        {
+          user: "Raamzeez",
+          repo: "presentation-maker",
+        }
+      );
+      if (!response.status) {
+        console.error(response.data);
+        setError(response.data);
+        setLoading(false);
+      }
+      console.log("commits", response.data);
+      setCommits(response.data);
+      setLoading(false);
+    } catch (err) {
+      setError(err);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    // try {
-    //   const response = await axios.post(
-    //     "http://localhost:3000/projects/commits",
-    //     {
-    //       user: "i'lladditlater",
-    //       repo: "i'llalsoaddthislater",
-    //     }
-    //   );
-    //   if (!response.status) {
-    //     console.error(response.data);
-    //     setError(response.data);
-    //     setLoading(false);
-    //   }
-    //   console.log("commits", response.data);
-    //   setCommits(response.data);
-    //   setLoading(false);
-    // } catch (err) {
-    //   setError(err);
-    //   setLoading(false);
-    // }
+    fetchCommits();
   }, []);
 
   return (
@@ -191,18 +196,38 @@ function HomePage() {
             >
               {!loading ? (
                 <>
-                  {commits.map(({ author, time, title }, index) => {
-                    return (
-                      <Commits
-                        author={author}
-                        time={time}
-                        title={title}
-                        hideBottomBorder={
-                          index === commits.length - 1 ? false : true
-                        }
-                      />
-                    );
-                  })}
+                  {commits.length > 0 ? (
+                    <>
+                      {commits.map(({ author, time, title }, index) => {
+                        return (
+                          <Commits
+                            author={author}
+                            time={time}
+                            title={title}
+                            hideBottomBorder={
+                              index === commits.length - 1 ? false : true
+                            }
+                          />
+                        );
+                      })}
+                    </>
+                  ) : (
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <h3 style={{ marginTop: "17%", color: "#ff4d9d" }}>
+                        Error
+                      </h3>
+                      <p style={{ marginTop: 10 }}>
+                        Unable to find commits data
+                      </p>
+                    </div>
+                  )}
                 </>
               ) : (
                 <CircleLoader size={100} color={"white"} />
