@@ -1,58 +1,32 @@
-.contact_main{
-    color:white;
+.container{
     background: linear-gradient(45deg, #414141, #000000);
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
+    color: white;
+    overflow-y: hidden;
 }
 
-.contact_box{
-   
-    text-align: center;
-    padding: 150px;
-    color:black;
-    position: relative;
-    max-width: 450px;
-    width: 100%;
-    background: white;
-    border-radius: 10px;
-  }
+form { 
+    margin:50px;
+}
 
- input[type=text] {
-   
-    margin:10px 0; 
-
-    padding:10px;
-    border:0;
-    box-shadow:0 0 15px 13px rgba(0,0,0,0.06);
-  }
-
+.feedback-input {
+    transition: all 0.3s;
+    padding: 13px;
+    margin-bottom: 15px;
+   font-size: 18px; 
+   background-color: transparent;
+   border:2px solid black;
  
-
-
-ul li{
-    text-decoration: none;
-    font-weight: 400;
-    list-style: none;
-    color: white;
-    
-
 }
 
-.submission{
-    
-    border-radius: 25px;
-    background-color: black;
-    color: white;
-    list-style: none;
-    text-decoration: none;
-    font-weight: 400;
-    
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-
+[type="submit"] {
+  font-size:24px;
+  padding-top:10px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  width: 100%;
+  background:linear-gradient(45deg, #414141, #000000);
+  border:0;
+  cursor:pointer;
+  color:white;
+  font-weight:700;
 }
-
-  
