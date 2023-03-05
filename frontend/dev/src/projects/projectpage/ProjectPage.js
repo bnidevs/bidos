@@ -1,5 +1,4 @@
 import './ProjectPage.css';
-import logo from '../../static/logo.png';
 import { PageHeader } from '../../components/Parts';
 import { useEffect, useState } from 'react';
 
@@ -86,10 +85,8 @@ function ProjectPage(props){
       <section className='project_page_main'>
           <PageHeader />
           <div className="left_sidebar">
-            <div className="image_wrapper">
-                
-                {'logo_link' in projectData ? <img src={projectData.logo_link} className='proj_img'/> : <img src={logo} className='proj_img'/>}
-                
+            <div className="image_wrapper">  
+                {'logo_link' in projectData ? <img src={projectData.logo_link} className='proj_img'/> : <p className='proj_name'>{projectData.project_name}</p>}  
                 <div className='flex'>
                     <RepoBtn link={projectData.repo_link} />
                 </div>

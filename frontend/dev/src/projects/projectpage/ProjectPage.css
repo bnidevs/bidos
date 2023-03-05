@@ -76,7 +76,7 @@
     position: relative;
 }
 
-.proj_img {
+.proj_img, .proj_name {
     background-color: black;
     object-fit: contain;
     width: 200px;
@@ -87,6 +87,14 @@
     border-radius: 50%;
     border: 3px solid black;
     align-self: center;
+}
+
+.proj_name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: min(8vw, 30px);
 }
 
 .issue_wrapper {
