@@ -85,8 +85,8 @@ function ProjectPage(props){
       <section className='project_page_main'>
           <PageHeader />
           <div className="left_sidebar">
-            <div className="image_wrapper">
-                {'logo_link' in projectData ? <img src={projectData.logo_link} className='proj_img'/> : ''}
+            <div className="image_wrapper">  
+                {'logo_link' in projectData ? <img src={projectData.logo_link} className='proj_img'/> : <p className='proj_name'>{projectData.project_name}</p>}  
                 <div className='flex'>
                     <RepoBtn link={projectData.repo_link} />
                 </div>
