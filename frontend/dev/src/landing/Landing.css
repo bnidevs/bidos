@@ -43,9 +43,6 @@ header ul{
     width: 350px;
     position: relative;
     display: flex;
-
-    position: relative;
-    display: flex;
     justify-content: space-around;
     align-content: center;
     flex-direction: row;
