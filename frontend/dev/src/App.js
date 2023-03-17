@@ -53,7 +53,7 @@ function App() {
         const Page =  paths[pagePath];
 
         return {Page, variables};
-    }, [pathnameParts, paths]);
+    }, []);
 
     return <Page  {...variables}/>
 }
