@@ -57,10 +57,7 @@ function AccountDetails(){
                     Phone: <input type='text' placeholder='(123) 456-7890' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
                 </li>
                 <li>
-                    Email: <input type='text' placeholder='example@email.com' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
-                </li>
-                <li>
-                    Address: <input type='text' placeholder='1 Main Street' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
+                    Github: <input type='text' placeholder='example@email.com' className={`button ${canEdit ? 'notediting' : 'editing'}`} readOnly={canEdit} />
                 </li>
             </ul>
         </section>
