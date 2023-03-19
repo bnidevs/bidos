@@ -1,0 +1,75 @@
+.account_main {
+    color:white;
+    background: linear-gradient(45deg, #414141, #000000);
+    width: 100vw;
+    overflow-x: hidden;
+    justify-content: center;
+}
+section .account_body {
+    overflow-x: hidden;
+    width: 100vw;
+    padding: 0;
+}
+.account_details_list {
+    padding-left: 100px;
+    padding-top: 100px;
+    padding-right: 0;
+    padding-bottom: 0;
+    display: inline-block;
+}
+.payment_methods_list {
+    padding-left: 100px;
+    padding-top: 100px;
+    padding-right: 0;
+    padding-bottom: 0;
+    display: inline-block;
+}
+.project_contributions_list {
+    padding-left: 100px;
+    padding-top: 100px;
+    padding-right: 0;
+    padding-bottom: 0;
+    display: inline-block;
+}
+.list_title_li {
+    display: flex;
+    align-items: center;
+}
+.list_title {
+    font-size: 2vmax;
+}
+.edit_btn {
+    background: linear-gradient(45deg, #212121, #414141);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.editing {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: white;
+    background-color: #282828;
+    padding: 7px 0;
+    transition: 0.2s;
+}
+.editing:placeholder-shown ~ .editing {
+    cursor: text;
+    top: 20px;
+}
+.notediting {
+    color: white;
+    border: none;
+    border-style: none;
+    background: transparent;
+    transition: 0.2s;
+}
+.notediting::placeholder {
+    color: transparent;
+}
