@@ -62,21 +62,37 @@ function ProjectPage(props){
                 })
                 .then(repo_link => {
                     fetch(`https://api.github.com/repos/${repo_link.split('.com/')[1]}/contributors`)
-                        .then(resp => resp.json())
+                        .then(resp => {
+                            if (!resp.ok) {
+                                throw new Error('API Response failed!');
+                            }
+                            return resp.json();
+                        })
                         .then(contributors => contributors.sort(
                             (a, b) => b.contributions - a.contributions
                             ).filter(
                                 (x) => !x.login.includes('[bot]')
                             ))
                         .then(lst => lst.slice(0,5))
-                        .then(top5 => setContributorData(top5));
+                        .then(top5 => setContributorData(top5))
+                        .catch(error => {
+                            setErrorMessage('Error fetching data: ' + error.message);
+                        });
                     return repo_link;
                 })
                 .then(repo_link => {
                     fetch(`https://api.github.com/repos/${repo_link.split('.com/')[1]}/issues?state=open`)
-                        .then(resp => resp.json())
+                        .then(resp => {
+                            if (!resp.ok) {
+                                throw new Error('API Response failed!');
+                            }
+                            return resp.json();
+                        })
                         .then(lst => lst.slice(0,10))
-                        .then(top10 => setIssueData(top10));
+                        .then(top10 => setIssueData(top10))
+                        .catch(error => {
+                            setErrorMessage('Error fetching data: ' + error.message);
+                        });
                 })
                 .catch(error => {
                     setErrorMessage('Error fetching data: ' + error.message);
