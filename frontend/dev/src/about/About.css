@@ -29,14 +29,14 @@
   
   .TestBut:hover {
     transform: scale(1.05);
-    font-size: 17px;
+    font-size: 1.1em;
    
   }
 
   .title{
     padding-bottom: 5px;
     color: white;
-    font-size: 35px;
+    font-size: 2em;
     text-align: left;
    
   }
@@ -44,5 +44,22 @@
       color: grey;
       font-weight: 100;
   }
-  
-  
+
+  @media (max-width: 768px) {
+    .about-section {
+      padding: 50px;
+    }
+    
+    .break {
+      padding: 50px;
+    }
+    
+    .blurb {
+      font-size: 1em;
+      line-height: 1.2em;
+    }
+    
+    .title {
+      font-size: 1.5em;
+    }
+  }

@@ -7,6 +7,7 @@ import { ContactPage } from './contact/Contact';
 import { AboutPage } from './about/About';
 import { AccountPage } from "./account/Account";
 
+
 import './login/Login.css';
 import './landing/Landing.css';
 import './projects/Projects.css';
