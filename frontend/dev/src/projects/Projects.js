@@ -27,6 +27,7 @@ function Switcher(){
 function ProjectsList(props){
     const [filtered, setFiltered] = useState(props.projList);
     const [searchVal, setSearchVal] = useState('');
+    const [errorMessage, setErrorMessage] = useState(null);
     const currency_format = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
@@ -64,7 +65,12 @@ function ProjectsList(props){
 
     useEffect(() => {
         fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects')
-            .then(resp => resp.json())
+            .then(resp => {
+                if (!resp.ok) {
+                    throw new Error('API Response failed!');
+                }
+                return resp.json();
+            })
             .then(obj => obj['projects']['Items'])
             .then(data => {
                 return data.map(el => {
@@ -79,17 +85,24 @@ function ProjectsList(props){
             })
             .then(cleaned => {
                 setFiltered(cleaned);
+            })
+            .catch(error => {
+                setErrorMessage('Error fetching data: ' + error.message);
             });
     }, []);
 
     return(
         <>
             <SearchField projList={props.projList}/>
-            <div className="project_list">
-                {filtered.map((project) => (
-                    <ProjectCard name={project.project_name} tagline={project.tagline} pool={currency_format.format(project.project_pool)}/>
-                ))}
-            </div>
+            {errorMessage !== null ? (
+                <span className='error_message'>{errorMessage}</span>
+            ) : (
+                <div className="project_list">
+                    {filtered.map((project) => (
+                        <ProjectCard name={project.project_name} tagline={project.tagline} pool={currency_format.format(project.project_pool)}/>
+                    ))}
+                </div>
+            )}
         </>
     );
 }
@@ -132,10 +145,16 @@ function ProjectCard(props){
 
 function ProjectsPage(){
     const [projects, setProjects] = useState([]);
+    const [errorMessage, setErrorMessage] = useState(null);
 
     useEffect(() => {
         fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects')
-            .then(resp => resp.json())
+            .then(resp => {
+                if (!resp.ok) {
+                    throw new Error('API Response failed!');
+                }
+                return resp.json();
+            })
             .then(obj => obj['projects']['Items'])
             .then(data => {
                 return data.map(el => {
@@ -150,16 +169,23 @@ function ProjectsPage(){
             })
             .then(cleaned => {
                 setProjects(cleaned);
+            })
+            .catch(error => {
+                setErrorMessage('Error fetching data: ' + error.message);
             });
     }, []);
 
     return(
         <section className='projects_main'>
             <PageHeader />
-            <div className="content">
-                <Switcher />
-                <ProjectsList projList={projects}/>
-            </div>                 
+            {errorMessage !== null ? (
+                <span className='error_message'>{errorMessage}</span>
+            ) : (
+                <div className="content">
+                    <Switcher />
+                    <ProjectsList projList={projects}/>
+                </div>
+            )}
         </section>
     );
 }

@@ -6,6 +6,14 @@
     width: 100vw;
 }
 
+.error_message {
+    background-color: #414141;
+    border-radius: 2vmin;
+    padding: 2vmax;
+    margin: 3vmax;
+    color: white;
+}
+
 .project-timeline{
     padding: 10px;
     background-color: aliceblue;
@@ -66,7 +74,6 @@
 }
 
 .left_sidebar {
-    margin-right: 20px;
     padding: 10px;
     background-color: aliceblue;
     width: 20vw;
@@ -76,7 +83,7 @@
     position: relative;
 }
 
-.proj_img, .proj_name {
+.proj_img {
     background-color: black;
     object-fit: contain;
     width: 200px;
@@ -87,14 +94,6 @@
     border-radius: 50%;
     border: 3px solid black;
     align-self: center;
-}
-
-.proj_name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: min(8vw, 30px);
 }
 
 .issue_wrapper {

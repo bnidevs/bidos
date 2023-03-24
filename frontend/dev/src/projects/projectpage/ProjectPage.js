@@ -38,11 +38,17 @@ function ProjectPage(props){
     const [projectData, setProjectData] = useState({});
     const [contributorData, setContributorData] = useState([]);
     const [issueData, setIssueData] = useState([]);
+    const [errorMessage, setErrorMessage] = useState(null);
 
     useEffect(() => {
         const t = async () => {
             fetch('https://cxef3s02t6.execute-api.us-east-1.amazonaws.com/projects/search?name=' + props.projectName.replaceAll('_', ' '))
-                .then(resp => resp.json())
+                .then(resp => {
+                    if (!resp.ok) {
+                        throw new Error('API Response failed!');
+                    }
+                    return resp.json();
+                })
                 .then(obj => obj['projects']['Items'][0])
                 .then(proj => {
                     for(let k in proj){
@@ -56,21 +62,40 @@ function ProjectPage(props){
                 })
                 .then(repo_link => {
                     fetch(`https://api.github.com/repos/${repo_link.split('.com/')[1]}/contributors`)
-                        .then(resp => resp.json())
+                        .then(resp => {
+                            if (!resp.ok) {
+                                throw new Error('API Response failed!');
+                            }
+                            return resp.json();
+                        })
                         .then(contributors => contributors.sort(
                             (a, b) => b.contributions - a.contributions
                             ).filter(
                                 (x) => !x.login.includes('[bot]')
                             ))
                         .then(lst => lst.slice(0,5))
-                        .then(top5 => setContributorData(top5));
+                        .then(top5 => setContributorData(top5))
+                        .catch(error => {
+                            setErrorMessage('Error fetching data: ' + error.message);
+                        });
                     return repo_link;
                 })
                 .then(repo_link => {
                     fetch(`https://api.github.com/repos/${repo_link.split('.com/')[1]}/issues?state=open`)
-                        .then(resp => resp.json())
+                        .then(resp => {
+                            if (!resp.ok) {
+                                throw new Error('API Response failed!');
+                            }
+                            return resp.json();
+                        })
                         .then(lst => lst.slice(0,10))
-                        .then(top10 => setIssueData(top10));
+                        .then(top10 => setIssueData(top10))
+                        .catch(error => {
+                            setErrorMessage('Error fetching data: ' + error.message);
+                        });
+                })
+                .catch(error => {
+                    setErrorMessage('Error fetching data: ' + error.message);
                 });
         };
         t();
@@ -84,36 +109,42 @@ function ProjectPage(props){
     return(
       <section className='project_page_main'>
           <PageHeader />
-          <div className="left_sidebar">
-            <div className="image_wrapper">  
-                {'logo_link' in projectData ? <img src={projectData.logo_link} className='proj_img'/> : <p className='proj_name'>{projectData.project_name}</p>}  
-                <div className='flex'>
-                    <RepoBtn link={projectData.repo_link} />
+          {errorMessage !== null ? (
+            <span className='error_message'>{errorMessage}</span>
+          ) : (
+            <>
+                <div className="left_sidebar">
+                <div className="image_wrapper">
+                    {'logo_link' in projectData ? <img src={projectData.logo_link} className='proj_img'/> : ''}
+                    <div className='flex'>
+                        <RepoBtn link={projectData.repo_link} />
+                    </div>
                 </div>
-            </div>
 
-            <h1>{projectData.project_name}</h1>
-            <h3>{projectData.tagline}</h3>
-            <h3>Pool: {currency_format.format(projectData.project_pool)}</h3>
-            <p>
-                {projectData.description}
-            </p>
-            <br />
-            <br />
-            <div className='flex col left inherit-width'>
-                <h3>Top contributors:</h3>
-                <div>
-                    {contributorData.map(e => <ContributorStub {...e} />)}
+                <h1>{projectData.project_name}</h1>
+                <h3>{projectData.tagline}</h3>
+                <h3>Pool: {currency_format.format(projectData.project_pool)}</h3>
+                <p>
+                    {projectData.description}
+                </p>
+                <br />
+                <br />
+                <div className='flex col left inherit-width'>
+                    <h3>Top contributors:</h3>
+                    <div>
+                        {contributorData.map(e => <ContributorStub {...e} />)}
+                    </div>
                 </div>
-            </div>
-            <br />  
-          </div>
-          <div className='project-timeline'>
-                <h3>
-                    Recent Issues
-                </h3>
-                {issueData.map(e => <IssueStub {...e}/>)}
-        </div>               
+                <br />  
+                </div>
+                <div className='project-timeline'>
+                        <h3>
+                            Recent Issues
+                        </h3>
+                        {issueData.map(e => <IssueStub {...e}/>)}
+                </div>     
+            </>
+          )}          
       </section>
     );
 }
