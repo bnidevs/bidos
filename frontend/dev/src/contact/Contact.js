@@ -7,7 +7,7 @@ function ContactPage() {
       <PageHeader />
       <div className="form-container">
         <form>
-          <textarea name="text" className="feedback-input" placeholder="Response"></textarea>
+          <textarea name="text" className="feedback-input resizable" placeholder="Response"></textarea>
           <input type="submit" value="SUBMIT" />
         </form>
       </div>
