@@ -1,42 +1,22 @@
 import './Contact.css';
-import {PageHeader} from '../components/Parts';
+import { PageHeader } from '../components/Parts';
 
-function TextField(props){
-      return(
+function ContactPage() {
+  return (
+    <div className="page-container">
+      <PageHeader />
+     
         <form>
-            <input type="text" placeholder = {props.displayString} />
+          <textarea name="text" className="feedback-input resizable" placeholder="Response"></textarea>
+          <input type="submit" value="SUBMIT" />
         </form>
-      );
-  }
-
-  function TextButton(props){
-    return(
-      <form>
-          <ul>
-            <li><a href={props.linkPath} className="submission">{props.displayString}</a></li>
-          </ul>
-      </form>
-    );
+      
+      <p className="cBlurb">
+        Thank you for considering to contact us. If you have an issue with our product or service, the best way to address it is by opening an issue on our <a href = "https://github.com/bnidevs/bidos" className = "links">GitHub repository</a>. This way, our team can quickly 
+        and efficiently address your concerns and provide you with the support you need. We appreciate your feedback and look forward to hearing from you!
+      </p>
+    </div>
+  );
 }
 
-function ContactPage(){
-    return(
-        <section className='contact_main'>
-          <PageHeader />
-          
-          <div className="contact_box">
-
-            <form className = "field">
-                    <TextField displayString = "Name"/>
-                    <TextField displayString = "Email"/>
-                    <TextField displayString = "Message"/>
-                    <TextButton displayString = "Submit"/>
-                </form>
-            </div>
-
-        </section>
-
-    );
-}
-
-export {ContactPage};
+export { ContactPage };
