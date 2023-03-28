@@ -1,7 +1,7 @@
 .contact_main{
     color:white;
     background: linear-gradient(45deg, #414141, #000000);
-    width: 100vw;
+    width: 100%;
     justify-content: center;
     align-items: center;
 }
@@ -9,50 +9,58 @@
 .contact_box{
    
     text-align: center;
-    padding: 150px;
+    padding: 10vw;
     color:black;
     position: relative;
-    max-width: 450px;
+    max-width: 90%;
     width: 100%;
     background: white;
     border-radius: 10px;
   }
 
  input[type=text] {
-   
     margin:10px 0; 
-
-    padding:10px;
+    padding:2vw;
     border:0;
     box-shadow:0 0 15px 13px rgba(0,0,0,0.06);
   }
-
- 
-
 
 ul li{
     text-decoration: none;
     font-weight: 400;
     list-style: none;
     color: white;
-    
+    font-size: 3vw;
 
 }
 
 .submission{
-    
     border-radius: 25px;
     background-color: black;
     color: white;
     list-style: none;
     text-decoration: none;
     font-weight: 400;
-    
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-
+    padding:2vw;
+    font-size:3vw;
+    margin-top:2vw;
 }
 
-  
+@media only screen and (max-width: 600px) {
+    .contact_box {
+    padding: 5vw;
+}
+input[type=text] {
+    padding: 5vw;
+}
+
+ul li{
+    font-size: 5vw;
+}
+
+.submission{
+    padding: 5vw;
+    font-size: 5vw;
+    margin-top: 5vw;
+}
+}

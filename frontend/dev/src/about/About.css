@@ -1,22 +1,20 @@
   .about-section {
-    padding: 250px;
+    padding: 80px;
     padding-bottom: 500px;
     text-align: center;
-  
     background: linear-gradient(45deg, #414141, #000000);
     color: white;
-    overflow-y: hidden;
     font-family: 'Poppins' , sans-serif;
-   
   }
  
 .break{
-  padding: 150;
+  padding: 100px;
 }
 .blurb{
   text-align: justify;
+  font-size: 1.2em;
+  line-height:1.5em;
 }
-
   .TestBut {
     text-decoration: none;
     top:50%;
@@ -34,7 +32,7 @@
   }
 
   .title{
-    padding-bottom: 5px;
+    padding-bottom: 30px;
     color: white;
     font-size: 2em;
     text-align: left;
@@ -43,15 +41,16 @@
   .subTitle{
       color: grey;
       font-weight: 100;
+
   }
 
   @media (max-width: 768px) {
     .about-section {
-      padding: 50px;
+      padding: 20px;
     }
     
     .break {
-      padding: 50px;
+      padding: 30px;
     }
     
     .blurb {
@@ -61,5 +60,6 @@
     
     .title {
       font-size: 1.5em;
+      text-align: left;
     }
   }

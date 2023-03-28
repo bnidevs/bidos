@@ -3,6 +3,7 @@
 .projects_main{
     background: linear-gradient(45deg, #414141, #000000);
     width: 100vw;
+    padding: 10%;
 }
 
 .switcher{
@@ -26,19 +27,22 @@
 .text{
     color: white;
     white-space: nowrap;
+    font-size: 1.2rem;
+    margin-left: 2%;
+
 }
 
 .project_card{
     background-color: antiquewhite;
-    width: 80vh;
-    height: 25vh;
-    min-width: 400px;
-    min-height: 150px;
+    width: 80%;
+    height: 20vh;
+    min-width: 300px;
+    min-height: 100px;
     border-radius: 20px;
-    padding: 2vh;
+    padding: 2vw;
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin: 5%;
     color: black;
 }
 
@@ -65,6 +69,7 @@
     text-decoration: none;
     transition: all 0.2s ease;
     outline: 2px solid black;
+    font-size: 1rem;
 }
 
 .project_card_btn:hover{
@@ -78,15 +83,35 @@
 
 .fonted{
     font-family: 'Poppins' , sans-serif;
+    font-size: 1.5rem;
 }
 
 .project_list{
     overflow-y: auto;
+    max-height: 50vh;
 }
 
 .proj_search{
     border-radius: 20px;
-    margin: 10px !important;
+    margin: 5% !important;
     width: 80%;
     max-width: 300px;
+    font-size: 1.2rem;
 }
+
+@media only screen and (max-width: 768px) {
+    .projects_main {
+      padding: 5%;
+    }
+    
+    .project_card {
+      width: 80vw;
+      height: 30vh;
+      min-width: 300px;
+      min-height: 100px;
+    }
+    
+    .proj_search {
+      width: 80%;
+    }
+  }
