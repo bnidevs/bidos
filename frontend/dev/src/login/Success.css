@@ -80,31 +80,6 @@ i{
   font-size: 14px;
 }
 
-/*Login Button*/
-.button .test{
-  border: none;
-  background-image: grey;
-  color: white;
-  letter-spacing:1px;
-  border-radius: 6px;
-  font-size: 20px;
-  font-weight: 500;
-
-  cursor: pointer;
-  
-  transition: all 0.3s ease; 
-  animation: 10s rotate linear infinite;
-  background: linear-gradient(45deg, #f04714, #a1134a, #187597, #189276, #c49727,#c52a03);
-  background-size: 600% 100%;
-  animation: gradient 16s linear infinite;
-  animation-direction: alternate;
-}
-
-/*Hover animation for login button*/
-.button .test:hover{
-  transform: scale(1.05);
-}
-
 /*Success Text*/
 .success-text {
   border: none;
