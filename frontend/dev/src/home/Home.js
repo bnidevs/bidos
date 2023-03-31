@@ -6,6 +6,7 @@ import StatButton from "./StatButton";
 import { useEffect, useState } from "react";
 import Stats from "./Stats";
 import { CircleLoader } from "react-spinners";
+import DropdownButton from "./DropdownButton";
 import axios from "axios";
 
 function HomePage() {
@@ -156,6 +157,7 @@ function HomePage() {
             >
               Latest Issues
             </h1>
+            <DropdownButton />
             <div className="project-timeline">
               <h3 style={{ color: "black" }}>Recent Issues</h3>
               <div className="issue_wrapper">
