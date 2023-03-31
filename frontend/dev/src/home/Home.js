@@ -11,32 +11,34 @@ import axios from "axios";
 
 function HomePage() {
   const [state, setState] = useState({
+    latestIssuesProject: "Submitty",
+    latestCommitsProject: "Submitty",
     showStats: false,
   });
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [commits, setCommits] = useState([]);
-  // const [commits, setCommits] = useState([
-  //   {
-  //     title:
-  //       "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
-  //     author: "DJ Raamzeez",
-  //     time: "2 days ago",
-  //   },
-  //   {
-  //     title:
-  //       "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
-  //     author: "DJ Raamzeez",
-  //     time: "2 days ago",
-  //   },
-  //   {
-  //     title:
-  //       "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
-  //     author: "DJ Raamzeez",
-  //     time: "2 days ago",
-  //   },
-  // ]);
+  // const [commits, setCommits] = useState([]);
+  const [commits, setCommits] = useState([
+    {
+      title:
+        "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
+      author: "DJ Raamzeez",
+      time: "2 days ago",
+    },
+    {
+      title:
+        "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
+      author: "DJ Raamzeez",
+      time: "2 days ago",
+    },
+    {
+      title:
+        "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
+      author: "DJ Raamzeez",
+      time: "2 days ago",
+    },
+  ]);
 
   const loadingStyle = {
     display: "flex",
@@ -75,9 +77,18 @@ function HomePage() {
     }
   };
 
-  useEffect(() => {
-    fetchCommits();
-  }, []);
+  const onChangeHandler = (value, type) => {
+    console.log(value);
+    if (type === "issues") {
+      setState({ ...state, latestIssuesProject: value });
+    } else {
+      setState({ ...state, latestCommitsProject: value });
+    }
+  };
+
+  // useEffect(() => {
+  //   fetchCommits();
+  // }, []);
 
   return (
     <section className="home_main">
@@ -157,9 +168,14 @@ function HomePage() {
             >
               Latest Issues
             </h1>
-            <DropdownButton />
+            <DropdownButton
+              value={state.latestIssuesProject}
+              onChangeHandler={(value) => onChangeHandler(value, "issues")}
+            />
             <div className="project-timeline">
-              <h3 style={{ color: "black" }}>Recent Issues</h3>
+              <h3 style={{ color: "black" }}>
+                {state.latestIssuesProject}'s Recent Issues
+              </h3>
               <div className="issue_wrapper">
                 <a
                   href="https://localhost:3000"
@@ -188,6 +204,10 @@ function HomePage() {
             >
               Latest Commits
             </h1>
+            <DropdownButton
+              value={state.latestCommitsProject}
+              onChangeHandler={(value) => onChangeHandler(value, "commits")}
+            />
             <div
               style={
                 loading
