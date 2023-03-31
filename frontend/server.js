@@ -5,7 +5,7 @@ const fetch = (...args) =>
 var bodyParser = require('body-parser');
 
 const CLIENT_ID = "432bd0957cc93ae4fd86";
-const CLIENT_SECRET = "c6f3303fd7e7f7cb6c9d6f94d21aff5a73d11715";
+const CLIENT_SECRET = "";
 
 var app = express();
 
