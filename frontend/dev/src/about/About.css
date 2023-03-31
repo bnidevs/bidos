@@ -1,48 +1,31 @@
-  .about-section {
+ .about-section {
     padding: 250px;
     padding-bottom: 500px;
     text-align: center;
-  
     background: linear-gradient(45deg, #414141, #000000);
     color: white;
-    overflow-y: hidden;
     font-family: 'Poppins' , sans-serif;
-   
   }
  
 .break{
   padding: 150;
 }
+
 .blurb{
   text-align: justify;
 }
+.title{
+  padding-bottom: 5px;
+  color: white;
+  font-size: 35px;
+  text-align: left;
 
-  .TestBut {
-    text-decoration: none;
-    top:50%;
-    background-color:white;
-    color: black;
-    border-radius:10px; 
-    padding:10px;
-    transition: all 0.3s ease; 
-  }
-  
-  .TestBut:hover {
-    transform: scale(1.05);
-    font-size: 17px;
-   
   }
 
-  .title{
-    padding-bottom: 5px;
-    color: white;
-    font-size: 35px;
-    text-align: left;
-   
-  }
-  .subTitle{
-      color: grey;
-      font-weight: 100;
-  }
-  
+.subTitle{
+  color: grey;
+  font-weight: 100;
+}
+
+
   
