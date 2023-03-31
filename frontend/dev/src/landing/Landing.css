@@ -13,11 +13,13 @@
 }
    
 section{ 
+   
     min-height:100vh;
     padding: 100px;
     display: flex;
-    align-items:center;
   
+    align-items:center;
+    
 }
 
 header{
@@ -32,13 +34,19 @@ header{
 }
 
 header ul{
+  
+    position: relative;
+    display: flex;
+
     position: relative;
     display: flex;
     justify-content: space-around;
+ 
 }
-
 header ul li{
     list-style: none;
+
+
 } 
 
 header ul li *{
@@ -58,12 +66,22 @@ header ul li:hover{
 }   
 
 .login{
+
     color:black;     
     background-color: white;
     border-radius: 25px;
+   
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+   
 }
 
 .content .textBox{
+    position:relative;
     max-width: 600px;
 }
 
@@ -84,8 +102,3 @@ header ul li:hover{
 .content .textBox p{
     color: white;
 }
-
-
-
-   
- 
