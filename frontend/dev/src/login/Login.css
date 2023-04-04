@@ -3,7 +3,6 @@
 
 .login_main {
   height: 100vh;
-  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,14 +52,15 @@ header .logo{
 .button .test{
   position: relative;
   height: 50px;
-  width: 100%;
+  width: auto;
+  display: inline-block; /* make the button inline with other elements */
+  min-width:120px;
   margin-top: 20px;
   margin-bottom: 10px;
+  padding:10px 20px;
 }
 
-i{
-  color: white;
-}
+
 
 /*Forgot password and sign up text*/
 .form a{

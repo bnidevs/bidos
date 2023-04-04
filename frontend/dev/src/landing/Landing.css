@@ -52,8 +52,6 @@ header ul{
 }
 header ul li{
     list-style: none;
-
-
 } 
 
 header ul li *{
@@ -73,15 +71,14 @@ header ul li:hover{
 }   
 
 .login{
-    color:black;
-    -webkit-box-sizing: border-box; 
-    -moz-box-sizing: border-box;   
+    color:white;
     box-sizing: border-box;       
-    background-color: white;
-    padding: 0.5%;
-    margin:0.5%;
-    border-radius: 25px;
-   
+    padding:10px 20px ;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    border: none;
+    font-size: 16px; 
 }
 
 .content{

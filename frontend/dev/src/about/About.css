@@ -52,11 +52,12 @@ line-height:1.5em;
 
 @media (max-width: 768px) {
   .about-section {
-    padding: 20px;
+    padding-top: 200px;
+    padding: 50px;
   }
   
   .break {
-    padding: 30px;
+    padding: 50px;
   }
   
   .blurb {
