@@ -1,65 +1,105 @@
-  .about-section {
-    padding: 80px;
-    padding-bottom: 500px;
-    text-align: center;
-    background: linear-gradient(45deg, #414141, #000000);
-    color: white;
-    font-family: 'Poppins' , sans-serif;
-  }
- 
+.about-section {
+  padding: 80px;
+  padding-bottom: 500px;
+  text-align: center;
+  background: linear-gradient(45deg, #414141, #000000);
+  color: white;
+  font-family: 'Poppins' , sans-serif;
+}
+
 .break{
-  padding: 100px;
+padding: 100px;
 }
 .blurb{
-  text-align: justify;
-  font-size: 1.2em;
-  line-height:1.5em;
+text-align: justify;
+font-size: 1.2em;
+line-height:1.5em;
 }
-  .TestBut {
-    text-decoration: none;
-    top:50%;
-    background-color:white;
-    color: black;
-    border-radius:10px; 
-    padding:10px;
-    transition: all 0.3s ease; 
+.TestBut {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  top:50%;
+  background-color:white;
+  color: black;
+  border-radius:10px;
+  padding:20px;
+  transition: all 0.3s ease; 
+}
+
+.TestBut:hover {
+  transform: scale(1.05);
+  font-size: 1.1em;
+ 
+}
+
+.title{
+  padding-bottom: 30px;
+  color: white;
+  font-size: 2em;
+  text-align: left;
+ 
+}
+.subTitle{
+    color: grey;
+    font-weight: 100;
+
+}
+
+
+
+
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 20px;
   }
   
-  .TestBut:hover {
-    transform: scale(1.05);
-    font-size: 1.1em;
-   
+  .break {
+    padding: 30px;
   }
-
-  .title{
-    padding-bottom: 30px;
-    color: white;
-    font-size: 2em;
+  
+  .blurb {
+    font-size: 1em;
+    line-height: 1.2em;
+  }
+  
+  .title {
+    font-size: 1.5em;
     text-align: left;
-   
   }
-  .subTitle{
-      color: grey;
-      font-weight: 100;
-
+  .logo-container {
+    padding: 0;
   }
 
-  @media (max-width: 768px) {
-    .about-section {
-      padding: 20px;
-    }
-    
-    .break {
-      padding: 30px;
-    }
-    
-    .blurb {
-      font-size: 1em;
-      line-height: 1.2em;
-    }
-    
-    .title {
-      font-size: 1.5em;
-      text-align: left;
-    }
+  .nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    overflow-y: scroll;
   }
+
+  .nav-list {
+    padding: 0;
+    width: 100%;
+  }
+
+  .nav-list li {
+    margin: 0;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .login {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
