@@ -1,5 +1,5 @@
 .about-section {
-  padding: 80px;
+  padding: 150px;
   padding-bottom: 500px;
   text-align: center;
   background: linear-gradient(45deg, #414141, #000000);
@@ -24,13 +24,12 @@ line-height:1.5em;
   color: black;
   border-radius:10px;
   padding:20px;
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
 }
 
 .TestBut:hover {
   transform: scale(1.05);
   font-size: 1.1em;
- 
 }
 
 .title{
@@ -38,7 +37,6 @@ line-height:1.5em;
   color: white;
   font-size: 2em;
   text-align: left;
- 
 }
 .subTitle{
     color: grey;
@@ -46,6 +44,25 @@ line-height:1.5em;
 
 }
 
+.nav {
+  top: 70px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom:0;
+
+}
+
+.nav-list {
+  padding: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.nav-list li {
+  margin: 0;
+}
 
 
 
@@ -55,16 +72,13 @@ line-height:1.5em;
     padding-top: 200px;
     padding: 50px;
   }
-  
   .break {
     padding: 50px;
   }
-  
   .blurb {
     font-size: 1em;
     line-height: 1.2em;
   }
-  
   .title {
     font-size: 1.5em;
     text-align: left;
@@ -72,14 +86,12 @@ line-height:1.5em;
   .logo-container {
     padding: 0;
   }
-
   .nav {
     position: fixed;
     top: 70px;
     left: 0;
     right: 0;
     height: 100vh;
-    overflow-y: scroll;
   }
 
   .nav-list {
