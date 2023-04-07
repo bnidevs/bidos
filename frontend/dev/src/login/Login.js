@@ -28,6 +28,7 @@ function LoginButton(props){
 
 function LoginPage(){
   const [loginSuccess, setLoginSuccess] = useState(false);
+  const [rerender, setRender] = useState(false);
 
   useEffect(() => {
     const queryString = window.location.search;
@@ -38,10 +39,50 @@ function LoginPage(){
     if (codeParam !== null) {
       setLoginSuccess(true);
     }
-  }, [])
+
+    // getting accessToken from local storage 
+    // (can be a security concern might want to change in the future)
+    if (codeParam && (localStorage.getItem("accessToken") === null)) {
+      async function getAccessToken() {
+        await fetch("http://localhost:4000/getAccessToken?code=" + codeParam, {
+          method: "GET"
+        }).then((response) => {
+          return response.json();  
+        }).then((data) => {
+          console.log(data);
+          if (data.access_token) {
+            localStorage.setItem("accessToken", data.access_token);
+            setRender(!rerender);
+          }
+        })
+      }
+    }
+  }, []);
+
+  async function getUserData() {
+    await fetch("http://localhost:4000/getUserData", {
+      method: "GET",
+      headers: {
+        "Authorization" : "Bearer " + localStorage.getItem("accessToken") // Bearer ACCESSTOKEN
+      }
+    }).then((response) => {
+        return response.json();
+    }).then((data) => {
+        console.log(data);
+    })
+  }
   
   return(
     <div>
+      {/* {localStorage.getItem("accessToken") ? 
+          <>
+            
+          </>
+          :
+          <>
+          </>
+      } */}
+      {console.log(localStorage.getItem("accessToken"))}
       {loginSuccess === true ? (
         <div className='login_main'>
           <header>
@@ -50,20 +91,13 @@ function LoginPage(){
           <div className="container">
               <div className="forms">
                   <div className="form login">
-                      <div className = "success-text">
-                          <div className = "test">
+                      <div className = "input-field button">
+                          <button className = "test" onClick={getUserData} >
                               LOGIN SUCCESS
-                          </div>
+                          </button>
                       </div>
                       <FooterLink displayString="Terms of Service" />
                       <FooterLink displayString="Privacy Policy" />
-                      {/* {localStorage.getItem("accessToken") ?
-                          <>
-                          </>
-                          :
-                          <>
-                          </>
-                      } */}
                   </div>
               </div>
           </div>
@@ -90,6 +124,3 @@ function LoginPage(){
 
 
 export {FooterLink, LoginPage, LoginButton};
-
-
-

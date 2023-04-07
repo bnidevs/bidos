@@ -1,53 +1,37 @@
-var express = require('express');
-var cors = require('cors');
-const fetch = (...args) =>
-    import('node.fetch').then(({default: fetch}) => fetch(...args));
-var bodyParser = require('body-parser');
+const express = require('express');
+const axios = require('axios');
 
 const CLIENT_ID = "432bd0957cc93ae4fd86";
 const CLIENT_SECRET = "c6f3303fd7e7f7cb6c9d6f94d21aff5a73d11715";
 
-var app = express();
+const app = express();
 
-app.use(cors());
-app.use(bodyParser.json());
+app.get('/login', async (req, res) => {
+    const { code } = req.query;
+    console.log(code);
 
-// code being passed from the frontend
-app.get('/getAccessToken', async function (req, res) {
-    req.query.code;
+  // Exchange code for access token
+  const response = await axios.post('https://github.com/login/oauth/access_token', {
+    client_id: CLIENT_ID,
+    client_secret: CLIENT_SECRET,
+    code,
+  });
 
-    const params = "?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&code=" + req.query.code;
-    await fetch("https://github.com/login/oauth/access_token" + params, {
-        method: "POST",
-        headers: {
-            "Accept": "application/json"
-        }
-    }).then((response) => {
-        return response.json();
-    }).then((data) => {
-        console.log(data);
-        res.json(data);
-    });
+  const accessToken = response.data.access_token;
+
+  // Use access token to fetch user information
+  const { data } = await axios.get('https://api.github.com/user', {
+    headers: {
+      Authorization: `token ${accessToken}`,
+    },
+  });
+
+  console.log(data);
+
+  // Redirect user to dashboard page or set user session, etc.
+  res.redirect('/login');
 });
 
-// getUserData
-// access token is going to be passed in as an Authorization header
-
-app.get('/getUserData', async function (req, res) {
-    req.get("Authorization"); // Bearer ACCESSTOKEN
-    await fetch("https://api.github.com/user", {
-        method: "GET",
-        headers: {
-            "Authorization" : req.get("Authorization")
-        }
-    }).then((response) => {
-        return response.json();
-    }).then((data) => {
-        console.log(data);
-        res.json(data);
-    })
-})
-
-app.listen(4000, function () {
-    console.log("CORS server running on port 4000");
-})
+app.listen(4000, () => {
+    console.log("axios server running on port 4000");
+});
