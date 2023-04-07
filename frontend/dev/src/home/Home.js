@@ -274,7 +274,9 @@ function HomePage() {
             />
             {state.showStats && (
               <>
-                <h1 style={{ marginTop: 100 }}>Last Week's Stats</h1>
+                <h1 style={{ marginTop: 100 }}>
+                  Last Week's Stats for All Projects
+                </h1>
                 <Stats />
               </>
             )}
