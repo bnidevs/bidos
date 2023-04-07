@@ -152,6 +152,14 @@ function HomePage() {
             </div>
           </div>
         </div>
+        <div
+          style={{
+            height: 5,
+            width: "100%",
+            backgroundColor: "dodgerblue",
+            margin: 50,
+          }}
+        ></div>
         <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
           <div
             style={{
@@ -164,14 +172,16 @@ function HomePage() {
           >
             <h1
               className="animate__animated animate__fadeInLeft"
-              style={{ fontSize: 30, margin: 30 }}
+              style={{ fontSize: 30 }}
             >
               Latest Issues
             </h1>
-            <DropdownButton
-              value={state.latestIssuesProject}
-              onChangeHandler={(value) => onChangeHandler(value, "issues")}
-            />
+            <div style={{ marginTop: 30 }}>
+              <DropdownButton
+                value={state.latestIssuesProject}
+                onChangeHandler={(value) => onChangeHandler(value, "issues")}
+              />
+            </div>
             <div className="project-timeline">
               <h3 style={{ color: "black" }}>
                 {state.latestIssuesProject}'s Recent Issues
@@ -183,7 +193,7 @@ function HomePage() {
                 >
                   <h5>
                     Fixed issues with package.json and prevented code from
-                    breaking{" "}
+                    breaking
                   </h5>
                 </a>
               </div>
@@ -200,14 +210,16 @@ function HomePage() {
           >
             <h1
               className="animate__animated animate__fadeInRight"
-              style={{ fontSize: 30, margin: 30 }}
+              style={{ fontSize: 30 }}
             >
               Latest Commits
             </h1>
-            <DropdownButton
-              value={state.latestCommitsProject}
-              onChangeHandler={(value) => onChangeHandler(value, "commits")}
-            />
+            <div style={{ marginTop: 30 }}>
+              <DropdownButton
+                value={state.latestCommitsProject}
+                onChangeHandler={(value) => onChangeHandler(value, "commits")}
+              />
+            </div>
             <div
               style={
                 loading
