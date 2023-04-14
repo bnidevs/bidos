@@ -58,7 +58,39 @@
     box-shadow: 0px 0px 5px grey;
 }
 
+.stats-button {
+    height: 50px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: dodgerblue;
+    border-radius: 7px;
+    margin-top: 100px;
+    transition: 0.3s ease;
+}
+
+.stats-button:hover {
+    background-color: rgb(30, 180, 255);
+}
+
 .statsCard {
     background: linear-gradient(121deg, rgba(72, 76, 79, 1) 45%, #56606b 100%);
     /* background: linear-gradient(121deg, rgba(0, 183, 255, 1) 45%, rgba(7, 125, 255, 1) 100%); */
 }
+
+.commit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: solid;
+    border-bottom-color: white;
+}
+
+.commit-profile-image {
+    height: 30px;
+    width: 30px;
+    margin: 20px;
+}
+

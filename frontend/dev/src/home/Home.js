@@ -96,9 +96,7 @@ function HomePage() {
       <div style={{ display: "flex", flexDirection: "column", flex: 3 }}>
         <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
           <div className="home-page-column">
-            <h1 className="animate__animated animate__fadeInLeft home-page-heading">
-              What You're Working On
-            </h1>
+            <h1 className="home-page-heading">What You're Working On</h1>
             <div className="home-page-projects-container">
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
@@ -107,9 +105,7 @@ function HomePage() {
             </div>
           </div>
           <div className="home-page-column">
-            <h1 className="animate__animated animate__fadeInRight home-page-heading">
-              What You've Funded
-            </h1>
+            <h1 className="home-page-heading">What You've Funded</h1>
             <div className="home-page-projects-container">
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
@@ -121,9 +117,7 @@ function HomePage() {
         <div className="home-page-divider"></div>
         <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
           <div className="home-page-column">
-            <h1 className="animate__animated animate__fadeInLeft home-page-heading">
-              Latest Issues
-            </h1>
+            <h1 className="home-page-heading">Latest Issues</h1>
             <div style={{ marginTop: 30 }}>
               <DropdownButton
                 value={state.latestIssuesProject}
@@ -148,9 +142,7 @@ function HomePage() {
             </div>
           </div>
           <div className="home-page-column">
-            <h1 className="animate__animated animate__fadeInRight home-page-heading">
-              Latest Commits
-            </h1>
+            <h1 className="home-page-heading">Latest Commits</h1>
             <div style={{ marginTop: 30 }}>
               <DropdownButton
                 value={state.latestCommitsProject}

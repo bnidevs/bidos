@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const StatButton = ({ onClickHandler }) => {
-  const [hover, setHover] = useState(false);
   const [clicked, setClicked] = useState(false);
 
   const onClick = () => {
@@ -10,22 +9,7 @@ const StatButton = ({ onClickHandler }) => {
   };
 
   return (
-    <div
-      style={{
-        height: 50,
-        width: 120,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "dodgerblue",
-        borderRadius: 7,
-        marginTop: 100,
-      }}
-      onMouseOver={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      className={`clickable ${hover ? "shadow" : ""}`}
-      onClick={onClick}
-    >
+    <div className={`stats-button clickable`} onClick={onClick}>
       <p style={{ fontSize: 15 }}>{clicked ? "Hide Stats" : "Show Stats"}</p>
     </div>
   );

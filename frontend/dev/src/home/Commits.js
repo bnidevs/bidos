@@ -1,15 +1,8 @@
 const Commits = ({ author, time, title, hideBottomBorder }) => {
   return (
     <div
-      className="clickable"
+      className="clickable commit"
       style={{
-        width: "100%",
-        // backgroundColor: "white",
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "row",
-        borderBottom: "solid",
-        borderBottomColor: "white",
         borderWidth: hideBottomBorder ? 0.5 : 0,
       }}
       onClick={() =>
@@ -21,7 +14,7 @@ const Commits = ({ author, time, title, hideBottomBorder }) => {
     >
       <img
         src="https://avatars.githubusercontent.com/u/37488506?v=4"
-        style={{ height: 30, width: 30, margin: 20 }}
+        className="commit-profile-image"
       />
       <p style={{ fontSize: 10 }}>{title}</p>
     </div>
