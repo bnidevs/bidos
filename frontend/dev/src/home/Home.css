@@ -7,26 +7,47 @@
 .commitsCard {
     background: linear-gradient(270deg, #6d41ee, #9a4fff);
     background-size: 400% 400%;
-
-    -webkit-animation: AnimationName 10s ease infinite;
-    -moz-animation: AnimationName 10s ease infinite;
-    animation: AnimationName 10s ease infinite;
 }
 
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+.home-page-column {
+    height: 100%;
+    display: flex;
+    flex: 0.5;
+    flex-direction: column;
+    align-items: center;
 }
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+
+.home-page-heading {
+    margin: 30px;
+    font-size: 30px;
 }
-@keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+
+.home-page-projects-container {
+    height: 300px;
+    width: 425px;
+    overflow-y: auto;
+}
+
+.home-page-divider {
+    height: 5px;
+    width: 100%;
+    background-color: dodgerblue;
+    margin: 25px
+}
+
+.stats-container {
+    height: 75%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
+.column-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .clickable {

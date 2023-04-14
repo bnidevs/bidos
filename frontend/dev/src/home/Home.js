@@ -95,56 +95,22 @@ function HomePage() {
       <PageHeader />
       <div style={{ display: "flex", flexDirection: "column", flex: 3 }}>
         <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
-          <div
-            style={{
-              height: "100%",
-              flex: 0.5,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <h1
-              className="animate__animated animate__fadeInLeft"
-              style={{ fontSize: 30, margin: 30 }}
-            >
+          <div className="home-page-column">
+            <h1 className="animate__animated animate__fadeInLeft home-page-heading">
               What You're Working On
             </h1>
-            <div
-              style={{
-                height: 300,
-                width: 425,
-                overflowY: "auto",
-              }}
-            >
+            <div className="home-page-projects-container">
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
             </div>
           </div>
-          <div
-            style={{
-              height: "100%",
-              flex: 0.5,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <h1
-              className="animate__animated animate__fadeInRight"
-              style={{ fontSize: 30, margin: 30 }}
-            >
+          <div className="home-page-column">
+            <h1 className="animate__animated animate__fadeInRight home-page-heading">
               What You've Funded
             </h1>
-            <div
-              style={{
-                height: 300,
-                width: 425,
-                overflowY: "auto",
-              }}
-            >
+            <div className="home-page-projects-container">
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
@@ -152,28 +118,10 @@ function HomePage() {
             </div>
           </div>
         </div>
-        <div
-          style={{
-            height: 5,
-            width: "100%",
-            backgroundColor: "dodgerblue",
-            margin: 50,
-          }}
-        ></div>
+        <div className="home-page-divider"></div>
         <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
-          <div
-            style={{
-              height: "75%",
-              flex: 0.5,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <h1
-              className="animate__animated animate__fadeInLeft"
-              style={{ fontSize: 30 }}
-            >
+          <div className="home-page-column">
+            <h1 className="animate__animated animate__fadeInLeft home-page-heading">
               Latest Issues
             </h1>
             <div style={{ marginTop: 30 }}>
@@ -199,19 +147,8 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div
-            style={{
-              height: "75%",
-              flex: 0.5,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <h1
-              className="animate__animated animate__fadeInRight"
-              style={{ fontSize: 30 }}
-            >
+          <div className="home-page-column">
+            <h1 className="animate__animated animate__fadeInRight home-page-heading">
               Latest Commits
             </h1>
             <div style={{ marginTop: 30 }}>
@@ -246,14 +183,7 @@ function HomePage() {
                       })}
                     </>
                   ) : (
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        flexDirection: "column",
-                      }}
-                    >
+                    <div className="column-centered">
                       <h3 style={{ marginTop: "17%", color: "#ff4d9d" }}>
                         Error
                       </h3>
@@ -270,15 +200,7 @@ function HomePage() {
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
-          <div
-            style={{
-              height: "75%",
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
+          <div className="stats-container">
             <StatButton
               onClickHandler={() =>
                 setState({ ...state, showStats: !state.showStats })
