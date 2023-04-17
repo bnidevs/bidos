@@ -1,6 +1,7 @@
 import './Login.css';
 import logo from '../static/logo.png';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const CLIENT_ID =  "432bd0957cc93ae4fd86";
 
@@ -28,49 +29,21 @@ function LoginButton(props){
 
 function LoginPage(){
   const [loginSuccess, setLoginSuccess] = useState(false);
-  const [rerender, setRender] = useState(false);
+  const [codeParam, setCodeParam] = useState("");
 
   useEffect(() => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const codeParam = urlParams.get("code");
+    const code = urlParams.get("code");
+    setCodeParam(code);
     console.log(codeParam);
     
     if (codeParam !== null) {
       setLoginSuccess(true);
     }
-
-    // getting accessToken from local storage 
-    // (can be a security concern might want to change in the future)
-    if (codeParam && (localStorage.getItem("accessToken") === null)) {
-      async function getAccessToken() {
-        await fetch("http://localhost:4000/getAccessToken?code=" + codeParam, {
-          method: "GET"
-        }).then((response) => {
-          return response.json();  
-        }).then((data) => {
-          console.log(data);
-          if (data.access_token) {
-            localStorage.setItem("accessToken", data.access_token);
-            setRender(!rerender);
-          }
-        })
-      }
-    }
   }, []);
 
-  async function getUserData() {
-    await fetch("http://localhost:4000/getUserData", {
-      method: "GET",
-      headers: {
-        "Authorization" : "Bearer " + localStorage.getItem("accessToken") // Bearer ACCESSTOKEN
-      }
-    }).then((response) => {
-        return response.json();
-    }).then((data) => {
-        console.log(data);
-    })
-  }
+
   
   return(
     <div>
@@ -92,7 +65,7 @@ function LoginPage(){
               <div className="forms">
                   <div className="form login">
                       <div className = "input-field button">
-                          <button className = "test" onClick={getUserData} >
+                          <button className = "test">
                               LOGIN SUCCESS
                           </button>
                       </div>
