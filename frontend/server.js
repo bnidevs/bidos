@@ -7,26 +7,40 @@ const CLIENT_SECRET = "";
 const app = express();
 
 app.get('/login', async (req, res) => {
-    const { code } = req.query;
-    console.log(code);
+    const { gitcode } = req.query;
+    console.log("github api code param: " + gitcode);
 
   // Exchange code for access token
-  const response = await axios.post('https://github.com/login/oauth/access_token', {
-    client_id: CLIENT_ID,
-    client_secret: CLIENT_SECRET,
-    code,
+  axios({
+    method: 'post',
+    url: 'https://github.com/login/oauth/access_token',
+    data: {
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
+      code: gitcode,
+    },
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    const accessToken = response.data.access_token;
+    console.log(`Access token: ${accessToken}`);
+  })
+  .catch(error => {
+    console.error(error);
   });
 
-  const accessToken = response.data.access_token;
+  // console.log(accessToken);
 
   // Use access token to fetch user information
-  const { data } = await axios.get('https://api.github.com/user', {
-    headers: {
-      Authorization: `token ${accessToken}`,
-    },
-  });
+  // const { data } = await axios.get('https://api.github.com/user', {
+  //   headers: {
+  //     Authorization: `token ${accessToken}`,
+  //   },
+  // });
 
-  console.log(data);
+  // console.log(data);
 
   // Redirect user to dashboard page or set user session, etc.
   res.redirect('/login');
