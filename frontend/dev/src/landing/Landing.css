@@ -38,7 +38,6 @@ header{
 header .logo{
     position: relative;
     max-width: 10%;
-    
 }
 
 header ul{
@@ -115,21 +114,26 @@ header ul li:hover{
 
 @media screen and (max-width: 768px) {
     section {
-        padding: 10% 5%;
+        padding: 10% 4%;
     }
     header {
-        padding: 2% 5%;
+        padding: 3% 4%;
     }
     header .logo {
         max-width: 20%;
     }
     header ul {
         max-width: 100%;
+        margin: 3%;
+    }
+    header ul li {
+        padding: 0.2%;
     }
     .login {
         margin: 2%;
         max-width: 100%;
     }
+ 
 }
 
 

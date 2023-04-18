@@ -69,8 +69,9 @@ line-height:1.5em;
 
 @media (max-width: 768px) {
   .about-section {
-    padding-top: 200px;
+    padding-top: 50px;
     padding: 50px;
+    padding-bottom: 60px;
   }
   .break {
     padding: 50px;
@@ -80,11 +81,17 @@ line-height:1.5em;
     line-height: 1.2em;
   }
   .title {
+    padding-bottom: 13px;
+    padding-top: 65px;
     font-size: 1.5em;
     text-align: left;
   }
   .logo-container {
-    padding: 0;
+    width: 100%;
+    display: flex;
+    padding: 18px;
+    position: center;
+    justify-content: center;
   }
   .nav {
     position: fixed;
@@ -101,18 +108,23 @@ line-height:1.5em;
 
   .nav-list li {
     margin: 0;
+    padding: 0;
+    width: 100%;
   }
 
   .text {
     font-size: 16px;
+    padding: 6;
   }
 
   .login {
-    padding: 8px 16px;
-    font-size: 14px;
+    padding: 9px;
+    font-size: 15px;
+
   }
 
   .hamburger {
     display: flex;
+    
   }
 }

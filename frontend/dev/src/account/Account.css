@@ -81,22 +81,38 @@ section .account_body {
 
 @media only screen and (max-width: 768px) {
     .account_details_list, .payment_methods_list, .project_contributions_list {
-        padding: 5px;
+        padding: 2px;
+        position: center;
+        margin-bottom:20px;
+    }
+    
+    .account_details_list {
+        margin-top:30px;
+        margin-bottom: 10px;
+    }
+    .payment_methods_list {
+        margin-bottom: 5px;
     }
     .list_title_li {
-        font-size: 20px;
+        font-size: 15px;
+        margin-bottom:0px;
     }
     .list_title {
         font-size: 1.5rem;
-        margin-right: 0;
-        margin-bottom: 10px;
+        margin-right: 5px;
+        margin-top:5px;
+        margin-bottom: 5px;
     }
     .edit_btn {
-        margin: 10px auto;
+        margin:10px auto;
     }
     .editing {
         font-size: 1rem;
     }
+    .notediting {
+        font-size: 1rem;
+    }
+
 }
 
 
