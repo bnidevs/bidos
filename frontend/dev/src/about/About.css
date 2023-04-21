@@ -1,31 +1,26 @@
- .about-section {
-    padding: 250px;
-    padding-bottom: 500px;
-    text-align: center;
-    background: linear-gradient(45deg, #414141, #000000);
-    color: white;
-    font-family: 'Poppins' , sans-serif;
-  }
- 
-.break{
-  padding: 150;
+/* About Section */
+.about-section {
+  background: linear-gradient(45deg, #414141, #000000);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow-y: hidden;
+  padding: 250px;
+  text-align: center;
 }
 
-.blurb{
+.blurb {
   text-align: justify;
 }
-.title{
-  padding-bottom: 5px;
+
+/* Title and Subtitle */
+.title {
   color: white;
   font-size: 35px;
+  padding-bottom: 5px;
   text-align: left;
+}
 
-  }
-
-.subTitle{
+.subTitle {
   color: grey;
   font-weight: 100;
 }
-
-
-  
