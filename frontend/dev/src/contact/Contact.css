@@ -1,8 +1,12 @@
+/* Contact.css */
+
+/* Set the background and font family for the whole page */
 body {
   background: linear-gradient(45deg, #414141, #000000);
   font-family: 'Poppins', sans-serif;
 }
 
+/* Set up a container to center the page content vertically */
 .page-container {
   display: flex;
   flex-direction: column;
@@ -10,39 +14,42 @@ body {
   height: 100vh;
 }
 
+/* Style for the text in the contact blurb */
 .cBlurb {
   margin: 10px 10px 10px 100px; /* add left margin of 100px */
   padding-right: 810px;
   justify-items: right;
   color: grey;
-
-
 }
 
-.links{
-  
+/* Style for links */
+.links {
   color: grey;
 }
 
+/* Style for the text area for feedback input */
 .feedback-input {
   margin: 10px 10px 10px 100px; /* add left margin of 100px */
   padding: 10px;
   height: 150px;
   width: 520px;
+  max-height: 376px;
+  max-width: 520px;
   border-radius: 5px;
   background-color: rgba(128, 128, 128, 0.22);
   font-size: 16px;
   resize: both;
 }
 
+/* Style for feedback input when it's in focus */
 .feedback-input:focus {
   outline: none;
   background-color: rgba(97, 96, 96, 0.22);
   color: white;
 }
 
+/* Style for the submit button */
 input[type="submit"] {
-
   margin: 10px 10px 10px 100px; /* add left margin of 100px */
   padding: 10px 20px;
   background-color: rgba(128, 128, 128, 0.22);
@@ -50,11 +57,11 @@ input[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
   display: block;
   font-size: 16px;
 }
 
+/* Style for the submit button when it's hovered */
 input[type="submit"]:hover {
   background-color: rgba(128, 128, 128, 0.062);
 }
