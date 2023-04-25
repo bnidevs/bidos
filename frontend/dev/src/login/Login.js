@@ -93,7 +93,12 @@ function LoginPage() {
                       <div className = "input-field button">
                           {Object.keys(userData).length !== 0 ? (
                             <div>
-                              <h2 className='git-user-name'>Hey there, {userData.login}</h2>
+                              <div className='git-user-data'>
+                                <img className='git-user-avatar' src={userData.avatar_url} alt="avatar" />
+                                <h2 className='git-user-name'>Hey there, {userData.login}</h2>
+                              </div>
+                              {/* link to the user's github account */}
+                              <a href={userData.html_url} className='git-user-link'>Go to my GitHub</a>
                             </div>
                           ) : (
                             <>

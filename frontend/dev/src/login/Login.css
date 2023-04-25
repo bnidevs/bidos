@@ -100,14 +100,39 @@ i{
   animation-direction: alternate;
 }
 
+/*User data div*/
+.git-user-data{
+  display: flex;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: space-around;
+}
+
+/*User avatar image*/
+.git-user-avatar{
+  border-radius: 50%;
+  width: 6vmax;
+  height: 6vmax;
+}
+
 /*User information header*/
 .git-user-name{
   color: #414141;
   font-size: 3vmin;
   font-weight: 600;
   border-radius: 25px;
+  margin-top: 2vmin;
   position: relative;
   text-align: center;
+}
+
+/*User github link*/
+.git-user-link{
+  color: #414141;
+  font-size: 2vmin;
+  font-weight: 600;
+  border-radius: 25px;
 }
 
 /*Hover animation for login button*/
