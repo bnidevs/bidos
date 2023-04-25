@@ -1,6 +1,7 @@
 import './Login.css';
 import logo from '../static/logo.png';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const CLIENT_ID =  "432bd0957cc93ae4fd86";
 
@@ -89,7 +90,7 @@ function LoginPage(){
                   <div className="form login">
                       <div className = "input-field button">
                           <button className = "test" onClick={() => {localStorage.removeItem("accessToken"); setReRender(!reRender)}}>
-                              LOGIN SUCCESS
+                              Log Out
                           </button>
                       </div>
                       <div>
