@@ -27,35 +27,38 @@ function LoginButton(props){
 }
 
 function LoginPage(){
-  const [loginSuccess, setLoginSuccess] = useState(false);
-  const [rerender, setRender] = useState(false);
+  const [codeParam, setCodeParam] = useState("");
+  // this is just to re-render the page when we get the access token from the server
+  const [reRender, setReRender] = useState(false);
 
+  // getting the github code param from the url
   useEffect(() => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const codeParam = urlParams.get("code");
-    console.log(codeParam);
-    
-    if (codeParam !== null) {
-      setLoginSuccess(true);
-    }
+    const codeParamTemp = urlParams.get("code");
+    console.log("codeParam: " + codeParamTemp);
+    setCodeParam(codeParamTemp);
 
-    // getting accessToken from local storage 
-    // (can be a security concern might want to change in the future)
-    if (codeParam && (localStorage.getItem("accessToken") === null)) {
+    // getting the access token from the local storage
+    // if we have the code param and no access token
+    if (codeParamTemp && (localStorage.getItem("accessToken") === null)) {
       async function getAccessToken() {
-        await fetch("http://localhost:4000/getAccessToken?code=" + codeParam, {
-          method: "GET"
+        console.log("getting access token");
+        await fetch("http://localhost:4000/getAccessToken?code=" + codeParamTemp, {
+          method: "GET",
         }).then((response) => {
-          return response.json();  
+          return response.json();
         }).then((data) => {
           console.log(data);
           if (data.access_token) {
             localStorage.setItem("accessToken", data.access_token);
-            setRender(!rerender);
+            setReRender(!reRender);
           }
-        })
+        }).catch((error) => {
+          console.log(error);
+        });
       }
+      getAccessToken();
     }
   }, []);
 
@@ -63,27 +66,20 @@ function LoginPage(){
     await fetch("http://localhost:4000/getUserData", {
       method: "GET",
       headers: {
-        "Authorization" : "Bearer " + localStorage.getItem("accessToken") // Bearer ACCESSTOKEN
+        "Authorization": "Bearer " + localStorage.getItem("accessToken")
       }
     }).then((response) => {
-        return response.json();
+      return response.json();
     }).then((data) => {
-        console.log(data);
-    })
+      console.log(data);
+    }).catch((error) => {
+      console.log(error);
+    });
   }
   
   return(
     <div>
-      {/* {localStorage.getItem("accessToken") ? 
-          <>
-            
-          </>
-          :
-          <>
-          </>
-      } */}
-      {console.log(localStorage.getItem("accessToken"))}
-      {loginSuccess === true ? (
+      {localStorage.getItem("accessToken") ? (
         <div className='login_main'>
           <header>
               <a href="/" ><img src={logo} className="logo" alt="logo"/></a>
@@ -92,9 +88,12 @@ function LoginPage(){
               <div className="forms">
                   <div className="form login">
                       <div className = "input-field button">
-                          <button className = "test" onClick={getUserData} >
+                          <button className = "test" onClick={() => {localStorage.removeItem("accessToken"); setReRender(!reRender)}}>
                               LOGIN SUCCESS
                           </button>
+                      </div>
+                      <div>
+                        <button onClick={getUserData}>Get User Data</button>
                       </div>
                       <FooterLink displayString="Terms of Service" />
                       <FooterLink displayString="Privacy Policy" />

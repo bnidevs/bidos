@@ -1,51 +1,54 @@
-const express = require('express');
-const axios = require('axios');
+var express = require('express');
+var cors = require('cors');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+var bodyParser = require('body-parser');
 
 const CLIENT_ID = "432bd0957cc93ae4fd86";
 const CLIENT_SECRET = "";
 
-const app = express();
+var app = express();
+app.use(cors());
+app.use(bodyParser.json());
 
-app.get('/login', async (req, res) => {
-    const { gitcode } = req.query;
-    console.log("github api code param: " + gitcode);
+app.get('/getAccessToken', async (req, res) => {
+  console.log(req.query.code);
 
-  // Exchange code for access token
-  axios({
-    method: 'post',
-    url: 'https://github.com/login/oauth/access_token',
-    data: {
-      client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET,
-      code: gitcode,
-    },
+  const params = "?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&code=" + req.query.code;
+
+  await fetch("https://github.com/login/oauth/access_token" + params, {
+    method: "POST",
     headers: {
-      'Accept': 'application/json'
+      "Accept": "application/json"
     }
-  })
-  .then(response => {
-    const accessToken = response.data.access_token;
-    console.log(`Access token: ${accessToken}`);
-  })
-  .catch(error => {
-    console.error(error);
+  }).then((response) => {
+    console.log(response);
+    return response.json();
+  }).then((data) => {
+    console.log(data);
+    res.json(data);
+  }).catch((error) => {
+    console.log(error);
   });
+});
 
-  // console.log(accessToken);
-
-  // Use access token to fetch user information
-  // const { data } = await axios.get('https://api.github.com/user', {
-  //   headers: {
-  //     Authorization: `token ${accessToken}`,
-  //   },
-  // });
-
-  // console.log(data);
-
-  // Redirect user to dashboard page or set user session, etc.
-  res.redirect('/login');
+// getting the user data
+app.get('/getUserData', async (req, res) => {
+  req.get('Authorization'); // bearer token
+  await fetch("https://api.github.com/user", {
+    method: "GET",
+    headers: {
+      "Authorization": req.get('Authorization') // bearer token
+    }
+  }).then((response) => {
+    return response.json();
+  }).then((data) => {
+    console.log(data);
+    res.json(data);
+  }).catch((error) => {
+    console.log(error);
+  });
 });
 
 app.listen(4000, () => {
-    console.log("axios server running on port 4000");
+    console.log("Server running on port 4000");
 });
