@@ -1,7 +1,6 @@
 import './Login.css';
 import logo from '../static/logo.png';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 const CLIENT_ID =  "432bd0957cc93ae4fd86";
 
@@ -13,6 +12,7 @@ function FooterLink(props){
   );
 }
 
+// the login button which redirects to the github login page
 function LoginButton(props){
   function loginWithGithub() {
     window.location.assign("https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID);
@@ -27,25 +27,25 @@ function LoginButton(props){
   )
 }
 
-function LoginPage(){
-  const [codeParam, setCodeParam] = useState("");
+function LoginPage() {
   // this is just to re-render the page when we get the access token from the server
   const [reRender, setReRender] = useState(false);
+  const [userData, setUserData] = useState({});
 
-  // getting the github code param from the url
+
   useEffect(() => {
+    // getting the github code param from the url
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const codeParamTemp = urlParams.get("code");
-    console.log("codeParam: " + codeParamTemp);
-    setCodeParam(codeParamTemp);
+    const codeParam = urlParams.get("code");
+    console.log("codeParam: " + codeParam);
 
     // getting the access token from the local storage
     // if we have the code param and no access token
-    if (codeParamTemp && (localStorage.getItem("accessToken") === null)) {
+    if (codeParam && (localStorage.getItem("accessToken") === null)) {
       async function getAccessToken() {
         console.log("getting access token");
-        await fetch("http://localhost:4000/getAccessToken?code=" + codeParamTemp, {
+        await fetch("http://localhost:4000/getAccessToken?code=" + codeParam, {
           method: "GET",
         }).then((response) => {
           return response.json();
@@ -63,6 +63,7 @@ function LoginPage(){
     }
   }, []);
 
+  // getting the user data from our local express server
   async function getUserData() {
     await fetch("http://localhost:4000/getUserData", {
       method: "GET",
@@ -73,6 +74,7 @@ function LoginPage(){
       return response.json();
     }).then((data) => {
       console.log(data);
+      setUserData(data);
     }).catch((error) => {
       console.log(error);
     });
@@ -89,12 +91,20 @@ function LoginPage(){
               <div className="forms">
                   <div className="form login">
                       <div className = "input-field button">
+                          {Object.keys(userData).length !== 0 ? (
+                            <div>
+                              <h2 className='git-user-name'>Hey there, {userData.login}</h2>
+                            </div>
+                          ) : (
+                            <>
+                            </>
+                          )}
                           <button className = "test" onClick={() => {localStorage.removeItem("accessToken"); setReRender(!reRender)}}>
                               Log Out
                           </button>
-                      </div>
-                      <div>
-                        <button onClick={getUserData}>Get User Data</button>
+                          {/* When you click this button it retreives the user data from the express
+                          server and populates the userData variable with the data */}
+                          <button className='test' onClick={getUserData}>Get User Data</button>
                       </div>
                       <FooterLink displayString="Terms of Service" />
                       <FooterLink displayString="Privacy Policy" />

@@ -10,11 +10,13 @@ var app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// getting the access token using the clientid, clientsecret and the code param as
+// query params and storing it at localhost:4000/getAccessToken
+// ** can also use the state param to prevent csrf attacks but this can be implemented later **
 app.get('/getAccessToken', async (req, res) => {
   console.log(req.query.code);
-
+  
   const params = "?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&code=" + req.query.code;
-
   await fetch("https://github.com/login/oauth/access_token" + params, {
     method: "POST",
     headers: {
@@ -26,12 +28,14 @@ app.get('/getAccessToken', async (req, res) => {
   }).then((data) => {
     console.log(data);
     res.json(data);
+  // if there is an error with the api request
   }).catch((error) => {
     console.log(error);
   });
 });
 
-// getting the user data
+// getting the user data using the github api and the access token
+// and storing it at localhost:4000/getUserData
 app.get('/getUserData', async (req, res) => {
   req.get('Authorization'); // bearer token
   await fetch("https://api.github.com/user", {
