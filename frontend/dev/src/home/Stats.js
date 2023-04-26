@@ -2,15 +2,7 @@ import ProgressGraph from "./ProgressGraph";
 
 const Stats = () => {
   return (
-    <div
-      style={{
-        marginTop: 50,
-        height: "40vh",
-        width: "80vw",
-        display: "flex",
-      }}
-      className="animate__animated animate__fadeIn shadow statsCard"
-    >
+    <div className="animate__animated animate__fadeIn shadow statsCard">
       {/* <h3>Stats (Last Week)</h3> */}
       <div
         style={{
@@ -22,13 +14,9 @@ const Stats = () => {
       >
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
             flex: 0.3,
-            // backgroundColor: "blue",
-            justifyContent: "center",
-            alignItems: "center",
           }}
+          className="column-centered"
         >
           <h5 style={{ marginTop: 20 }}>23 commits</h5>
           <h5 style={{ marginTop: 20, color: "#ff2954" }}>5 issues opened</h5>
