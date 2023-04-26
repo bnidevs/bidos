@@ -110,9 +110,9 @@ function LoginPage() {
                           ) : (
                             <>
                               <h2 className='git-login-success'>Login Success!</h2>
+                              <button className='test' onClick={getUserData}>Get User Data</button>
                             </>
                           )}
-                          <button className='test' onClick={getUserData}>Get User Data</button>
                           <button className = "test" onClick={() => {localStorage.removeItem("accessToken"); setReRender(!reRender)}}>
                               Log Out
                           </button>
