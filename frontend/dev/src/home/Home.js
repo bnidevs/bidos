@@ -1,25 +1,31 @@
+//CSS Import
 import "./Home.css";
-import { PageHeader } from "../components/Parts";
-import { ProjectCard } from "../projects/Projects";
-import Commits from "./Commits";
-import StatButton from "./StatButton";
-import { useEffect, useState } from "react";
-import Stats from "./Stats";
+
+//Libraries
+import { useState } from "react";
 import { CircleLoader } from "react-spinners";
-import DropdownButton from "./DropdownButton";
 import axios from "axios";
 
-function HomePage() {
+//Custom Components
+import Commits from "./Commits";
+import StatButton from "./StatButton";
+import DropdownButton from "./DropdownButton";
+import Stats from "./Stats";
+
+import { PageHeader } from "../components/Parts";
+import { ProjectCard } from "../projects/Projects";
+
+const HomePage = () => {
   const [state, setState] = useState({
-    latestIssuesProject: "Submitty",
-    latestCommitsProject: "Submitty",
-    showStats: false,
+    latestIssuesProject: "Submitty", //String - Represents what project to show Github issues for on the home page
+    latestCommitsProject: "Submitty", //Strings - Represents what project to show Github commits for on the home page
+    showStats: false, //Boolean - Represents whether or not to show the stats graph at the bottom of the home page
   });
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  // const [commits, setCommits] = useState([]);
+  const [loading, setLoading] = useState(false); //Boolean - Whether or not the commits are being loaded
+  const [error, setError] = useState(false); //Boolean - Whether or not there was an error in the API request to get commits
   const [commits, setCommits] = useState([
+    //Array of Objects - Temporary variable containing dummy data for commits
     {
       title:
         "Add routing for the home page and two columns and titles with each section. Additionally, I added dummy data and a scroll view to show the user what projects they have been working on",
@@ -40,12 +46,14 @@ function HomePage() {
     },
   ]);
 
+  //Style to be applied only when commits are being loaded
   const loadingStyle = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   };
 
+  //Style to be applied at all times for commits container
   const defaultStyle = {
     height: 212,
     width: 400,
@@ -54,6 +62,7 @@ function HomePage() {
     overflowY: "auto",
   };
 
+  //Async function that makes an API request to the server to fetch commits for a Github repository
   const fetchCommits = async () => {
     try {
       const response = await axios.post(
@@ -77,6 +86,7 @@ function HomePage() {
     }
   };
 
+  //Handler used when choosing an item from the issues or commits project dropdown
   const onChangeHandler = (value, type) => {
     console.log(value);
     if (type === "issues") {
@@ -86,6 +96,7 @@ function HomePage() {
     }
   };
 
+  //Currently commented as backend is not working, but the useEffect will fetch all commits while page renders
   // useEffect(() => {
   //   fetchCommits();
   // }, []);
@@ -211,6 +222,6 @@ function HomePage() {
       </div>
     </section>
   );
-}
+};
 
 export { HomePage };
