@@ -3,6 +3,7 @@ var cors = require('cors');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 var bodyParser = require('body-parser');
 
+// need to change these to your own client id and client secret (bidos github account)
 const CLIENT_ID = "432bd0957cc93ae4fd86";
 const CLIENT_SECRET = "";
 

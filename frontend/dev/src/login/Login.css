@@ -116,6 +116,16 @@ i{
   height: 6vmax;
 }
 
+/*Git login success*/
+.git-login-success{
+  color: #414141;
+  font-size: 3vmin;
+  font-weight: 600;
+  border-radius: 25px;
+  position: relative;
+  text-align: center;
+}
+
 /*User information header*/
 .git-user-name{
   color: #414141;
@@ -129,10 +139,8 @@ i{
 
 /*User github link*/
 .git-user-link{
-  color: #414141;
-  font-size: 2vmin;
-  font-weight: 600;
-  border-radius: 25px;
+  margin-top: 1vmax;
+  float: right;
 }
 
 /*Hover animation for login button*/

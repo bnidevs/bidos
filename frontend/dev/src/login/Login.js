@@ -38,6 +38,7 @@ function LoginPage() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const codeParam = urlParams.get("code");
+    // can remove, was mainly for testing
     console.log("codeParam: " + codeParam);
 
     // getting the access token from the local storage
@@ -45,6 +46,7 @@ function LoginPage() {
     if (codeParam && (localStorage.getItem("accessToken") === null)) {
       async function getAccessToken() {
         console.log("getting access token");
+        // need to change this to be the url of the local express server (or wherever you are hosting backend)
         await fetch("http://localhost:4000/getAccessToken?code=" + codeParam, {
           method: "GET",
         }).then((response) => {
@@ -56,15 +58,17 @@ function LoginPage() {
             setReRender(!reRender);
           }
         }).catch((error) => {
+          // can change to display an error message
           console.log(error);
         });
       }
       getAccessToken();
     }
-  }, []);
+  }, [reRender]);
 
   // getting the user data from our local express server
   async function getUserData() {
+    // need to change this to be the url of the local express server (or wherever you are hosting backend)
     await fetch("http://localhost:4000/getUserData", {
       method: "GET",
       headers: {
@@ -76,6 +80,7 @@ function LoginPage() {
       console.log(data);
       setUserData(data);
     }).catch((error) => {
+      // can change to display an error message
       console.log(error);
     });
   }
@@ -95,21 +100,24 @@ function LoginPage() {
                             <div>
                               <div className='git-user-data'>
                                 <img className='git-user-avatar' src={userData.avatar_url} alt="avatar" />
-                                <h2 className='git-user-name'>Hey there, {userData.login}</h2>
+                                <ul>
+                                  <h2 className='git-user-name'>Hey there, {userData.login}</h2>
+                                  {/* link to the user's github account */}
+                                  <a href={userData.html_url} target='_blank' rel='noreferrer' className='git-user-link'>Visit GitHub</a>
+                                </ul>
                               </div>
-                              {/* link to the user's github account */}
-                              <a href={userData.html_url} className='git-user-link'>Go to my GitHub</a>
                             </div>
                           ) : (
                             <>
+                              <h2 className='git-login-success'>Login Success!</h2>
                             </>
                           )}
+                          <button className='test' onClick={getUserData}>Get User Data</button>
                           <button className = "test" onClick={() => {localStorage.removeItem("accessToken"); setReRender(!reRender)}}>
                               Log Out
                           </button>
                           {/* When you click this button it retreives the user data from the express
                           server and populates the userData variable with the data */}
-                          <button className='test' onClick={getUserData}>Get User Data</button>
                       </div>
                       <FooterLink displayString="Terms of Service" />
                       <FooterLink displayString="Privacy Policy" />
