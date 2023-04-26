@@ -2,6 +2,7 @@ import React from "react";
 import { InputLabel, Select, MenuItem, FormControl } from "@mui/material";
 
 const DropdownButton = ({ value, onChangeHandler }) => {
+  //Dummy Data - Should be replaced with a list of all active projects on BidOS
   const items = ["Submitty", "EazyASM", "OpenCircuits"];
 
   return (

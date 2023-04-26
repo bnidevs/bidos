@@ -66,18 +66,23 @@ const HomePage = () => {
   const fetchCommits = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/projects/commits",
+        "http://localhost:3000/projects/commits", //Backend API Route
+        //Dummy Data
+        //Data should be sent in the form of {user: "XXXXX", repo: "XXXXX"}. Repo should be the github repository
+        //from which you want to get the commits from, and user should be the user who owns the repository
         {
           user: "Raamzeez",
           repo: "presentation-maker",
         }
       );
+      //If unable to get a response, stop the loading and set the error
       if (!response.status) {
         console.error(response.data);
         setError(response.data);
         setLoading(false);
       }
       console.log("commits", response.data);
+      //Else, set the commits data in the webpage and stop the loading
       setCommits(response.data);
       setLoading(false);
     } catch (err) {
@@ -87,6 +92,7 @@ const HomePage = () => {
   };
 
   //Handler used when choosing an item from the issues or commits project dropdown
+  //type - Should only have a string value that is either "issues" or "commits"
   const onChangeHandler = (value, type) => {
     console.log(value);
     if (type === "issues") {
@@ -109,6 +115,7 @@ const HomePage = () => {
           <div className="home-page-column">
             <h1 className="home-page-heading">What You're Working On</h1>
             <div className="home-page-projects-container">
+              {/* Dummy Data */}
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
@@ -118,6 +125,7 @@ const HomePage = () => {
           <div className="home-page-column">
             <h1 className="home-page-heading">What You've Funded</h1>
             <div className="home-page-projects-container">
+              {/* Dummy Data */}
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />
               <ProjectCard tagline="Test" pool={"$3000"} name={"Submitty"} />

@@ -3,7 +3,6 @@ import ProgressGraph from "./ProgressGraph";
 const Stats = () => {
   return (
     <div className="animate__animated animate__fadeIn shadow statsCard">
-      {/* <h3>Stats (Last Week)</h3> */}
       <div
         style={{
           display: "flex",

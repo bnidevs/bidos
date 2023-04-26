@@ -27,7 +27,7 @@ export const options = {
     legend: {
       position: "top",
       labels: {
-        fontColor: "white",
+        color: "white",
         fontSize: 15,
       },
     },

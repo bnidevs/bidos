@@ -3,7 +3,7 @@ const Commits = ({ author, time, title, hideBottomBorder }) => {
     <div
       className="clickable commit"
       style={{
-        borderWidth: hideBottomBorder ? 0.5 : 0,
+        borderWidth: hideBottomBorder ? 0.5 : 0, //hdieBottomBorder will be true only for the last commit item being rendered
       }}
       onClick={() =>
         window.open(
